@@ -14,6 +14,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "SVPullToRefresh.h"
+#import "ZYCellOfCenterPanelTableView.h"
 
 @interface ZYCenterPanelViewController : UIViewController
 

@@ -12,6 +12,7 @@
 		DF34270F197BC86A00E24C61 /* ZYSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF34270E197BC86A00E24C61 /* ZYSidePanelViewController.m */; };
 		DF342712197BC8E100E24C61 /* ZYCenterPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342711197BC8E100E24C61 /* ZYCenterPanelViewController.m */; };
 		DF342715197BC90B00E24C61 /* ZYLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */; };
+		DF40D25E197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */; };
 		DF745B4D197960B80033D336 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4C197960B80033D336 /* Foundation.framework */; };
 		DF745B4F197960B80033D336 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4E197960B80033D336 /* CoreGraphics.framework */; };
 		DF745B51197960B80033D336 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B50197960B80033D336 /* UIKit.framework */; };
@@ -82,6 +83,8 @@
 		DF342711197BC8E100E24C61 /* ZYCenterPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCenterPanelViewController.m; sourceTree = "<group>"; };
 		DF342713197BC90B00E24C61 /* ZYLeftPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLeftPanelViewController.h; sourceTree = "<group>"; };
 		DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLeftPanelViewController.m; sourceTree = "<group>"; };
+		DF40D25C197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCellOfCenterPanelTableView.h; sourceTree = "<group>"; };
+		DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCellOfCenterPanelTableView.m; sourceTree = "<group>"; };
 		DF745B49197960B80033D336 /* ABiteOfKunMing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABiteOfKunMing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF745B4C197960B80033D336 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DF745B4E197960B80033D336 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -273,6 +276,8 @@
 				DF342711197BC8E100E24C61 /* ZYCenterPanelViewController.m */,
 				DF342713197BC90B00E24C61 /* ZYLeftPanelViewController.h */,
 				DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */,
+				DF40D25C197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.h */,
+				DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */,
 			);
 			name = TableView;
 			sourceTree = "<group>";
@@ -335,7 +340,7 @@
 			children = (
 				DF342707197BB5EA00E24C61 /* Login */,
 				DF34270B197BC79600E24C61 /* TableView */,
-				DF7B2770197BFE2700BCCA0F /* Cell Detail */,
+				DF7B2770197BFE2700BCCA0F /* Detail View */,
 				DF34270C197BC7CB00E24C61 /* BaiDuMap */,
 				DF745B53197960B80033D336 /* Supporting Files */,
 			);
@@ -544,13 +549,13 @@
 			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
-		DF7B2770197BFE2700BCCA0F /* Cell Detail */ = {
+		DF7B2770197BFE2700BCCA0F /* Detail View */ = {
 			isa = PBXGroup;
 			children = (
 				DF7B2771197C1A4B00BCCA0F /* ZYCellDetailViewController.h */,
 				DF7B2772197C1A4B00BCCA0F /* ZYCellDetailViewController.m */,
 			);
-			name = "Cell Detail";
+			name = "Detail View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -662,6 +667,7 @@
 				DF745BFE197963D70033D336 /* AFHTTPRequestOperationManager.m in Sources */,
 				DF745C3019796BDC0033D336 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				DF745C14197963D70033D336 /* UIImageView+AFNetworking.m in Sources */,
+				DF40D25E197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m in Sources */,
 				DF745C00197963D70033D336 /* AFNetworkReachabilityManager.m in Sources */,
 				DF745C11197963D70033D336 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				DF745C17197963D70033D336 /* UIWebView+AFNetworking.m in Sources */,
