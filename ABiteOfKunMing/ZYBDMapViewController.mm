@@ -54,8 +54,9 @@
     annotation.coordinate = fixedLocationCoor;
     //导航终点坐标
     _endCoor = fixedLocationCoor;
-    annotation.title = @"";
-    BMKCoordinateRegion viewRegion = BMKCoordinateRegionMakeWithDistance(annotation.coordinate, 2000, 2000);
+    
+    annotation.title = _name ;
+    BMKCoordinateRegion viewRegion = BMKCoordinateRegionMakeWithDistance(annotation.coordinate, 1500, 1500);
     [mapView setRegion:viewRegion animated:YES];
     [mapView addAnnotation:annotation];
 }

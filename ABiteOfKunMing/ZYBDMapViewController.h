@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString *pinLat;
 @property (strong, nonatomic) NSString *pinLon;
+@property (strong, nonatomic) NSString *name;
 
 @end

@@ -18,11 +18,14 @@
 
 #define TEST_TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=10&lastid=0&name=hua19761110&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
+
 @interface ZYCenterPanelViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSString *selectedLat;
 @property (strong, nonatomic) NSString *selectedLon;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *place;
 @property (weak, nonatomic) IBOutlet UITableView *WBDataTableView;
 
 @end
@@ -45,6 +48,8 @@
     self.WBDataTableView.delegate = self;
     self.WBDataTableView.dataSource = self;
     
+    [self initData];
+    
     // setup pull-to-refresh
     [_WBDataTableView addPullToRefreshWithActionHandler:^{
         [self insertRowAtTop];
@@ -55,10 +60,22 @@
         [self insertRowAtBottom];
     }];
     
+}
+
+
+#pragma mark - Actions
+
+- (IBAction)showLeft:(id)sender
+{
+    [self.sidePanelController showLeftPanelAnimated:YES];
+}
+
+- (void)initData
+{
     //test URL
-    NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    //NSString *urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    //NSLog(@"%@",urlStr);
+    //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    NSString *urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    NSLog(@"%@",urlStr);
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -76,23 +93,13 @@
         NSLog(@"%@", error);
     }];
     [operation start];
-    
 }
-
-
-#pragma mark - Actions
-
-- (IBAction)showLeft:(id)sender
-{
-    [self.sidePanelController showLeftPanelAnimated:YES];
-}
-
 
 - (void)insertRowAtTop
 {
     //test URL
-    NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    //NSString *urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    NSString *urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     //NSLog(@"%@",urlStr);
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -116,16 +123,15 @@
     
 }
 
-
 - (void)insertRowAtBottom
 {
     //pageflag = 1 结合pagetime = last timestamp向下翻页更新微博
     NSString *timeStamp = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:[_dataSource count] - 1] objectForKey:@"timestamp"]];
     
     //test URL
-    NSString *urlStr = [NSString stringWithFormat:TEST_TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    //NSString *urlStr = [NSString stringWithFormat:TEST_TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     
-    //NSString *urlStr = [NSString stringWithFormat:TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    NSString *urlStr = [NSString stringWithFormat:TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     //NSLog(@"%@",urlStr);
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -153,12 +159,33 @@
     [_WBDataTableView.infiniteScrollingView stopAnimating];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)loadCellImage:(ZYCellOfCenterPanelTableView *)cell indexPath:(NSIndexPath *)indexPath
+{
+    __weak ZYCellOfCenterPanelTableView *weakCell = cell;
+    NSArray *imageUrlArray = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"image"];
+    if (![imageUrlArray isKindOfClass:[NSNull class]]) {
+        NSString *strImageUrl = [[imageUrlArray objectAtIndex:0] stringByAppendingString:@"/auto"];
+        NSURL *imageUrl = [NSURL URLWithString: strImageUrl];
+        NSURLRequest *request = [NSURLRequest requestWithURL:imageUrl];
+        [cell.imageView setImageWithURLRequest:request
+                              placeholderImage:[UIImage imageNamed:@"placeHolder"]
+                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                           weakCell.cellImage.image = image;
+                                       } failure:nil];
+        
+    }else{
+        weakCell.cellImage.image = nil;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showCellDetail"]) {
         ZYCellDetailViewController *cellDetailViewController = segue.destinationViewController;
         cellDetailViewController.selectedLat = _selectedLat;
         cellDetailViewController.selectedLon = _selectedLon;
+        cellDetailViewController.name = _name;
+        cellDetailViewController.place = _place;
     }
 }
 
@@ -184,33 +211,22 @@
     ZYCellOfCenterPanelTableView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
                                                             forIndexPath:indexPath];
     // Configure the cell...
-    __weak ZYCellOfCenterPanelTableView *weakCell = cell;
-    NSArray *imageUrlArray = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"image"];
-    if (![imageUrlArray isKindOfClass:[NSNull class]]) {
-        NSString *strImageUrl = [[imageUrlArray objectAtIndex:0] stringByAppendingString:@"/auto"];
-        NSURL *imageUrl = [NSURL URLWithString: strImageUrl];
-        NSURLRequest *request = [NSURLRequest requestWithURL:imageUrl];
-        [cell.imageView setImageWithURLRequest:request
-                              placeholderImage:[UIImage imageNamed:@"placeHolder"]
-                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                           weakCell.cellImage.image = image;
-                                       } failure:nil];
-
-    }else{
-        weakCell.cellImage.image = nil;
-    }
+    [self loadCellImage:cell indexPath:indexPath];
     
     cell.labelTitle.text = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"origtext"]];
-    cell.labelSubtitle.text = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"longitude"]];
+    //cell.labelSubtitle.text = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
     return cell;
 }
 
 #pragma mark - Table view delegate
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%d",indexPath.row);
     _selectedLat = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"latitude"]];
     _selectedLon = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"longitude"]];
+    _name = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"origtext"]];
+    _place = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
     [self performSegueWithIdentifier:@"showCellDetail" sender:self];
 }
 

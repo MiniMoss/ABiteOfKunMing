@@ -26,9 +26,8 @@
     [super viewDidLoad];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-    self.lableLat.text = _selectedLat;
-    self.lableLon.text = _selectedLon;
+    self.navigationItem.title = _name;
+    self.lableLon.text = _place;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -43,6 +42,8 @@
         ZYBDMapViewController *BDMapViewController = segue.destinationViewController;
         BDMapViewController.pinLat = _selectedLat;
         BDMapViewController.pinLon = _selectedLon;
+        BDMapViewController.name = _name;
+        
     }
 }
 

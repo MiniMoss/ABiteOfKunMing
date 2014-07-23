@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ABiteOfKunMing/ZYCenterPanelViewController.m"
-            timestampString = "427733737.361064"
+            timestampString = "427813855.017345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ABiteOfKunMing/ZYCenterPanelViewController.m"
-            timestampString = "427733737.361064"
+            timestampString = "427813855.017345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-showLeft:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ABiteOfKunMing/ZYCenterPanelViewController.m"
-            timestampString = "427733737.361064"
+            timestampString = "427813855.017345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,28 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ABiteOfKunMing/ZYCenterPanelViewController.m"
-            timestampString = "427733737.361064"
+            timestampString = "427813855.017345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ABiteOfKunMing/ZYBDMapViewController.mm"
-            timestampString = "427613945.344693"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,28 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ABiteOfKunMing/ZYCellDetailViewController.m"
-            timestampString = "427617356.098418"
+            timestampString = "427815363.948256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-prepareForSegue:sender:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ABiteOfKunMing/ZYBDMapViewController.mm"
-            timestampString = "427616975.033844"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

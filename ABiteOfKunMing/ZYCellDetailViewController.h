@@ -13,5 +13,7 @@
 
 @property (strong, nonatomic) NSString *selectedLat;
 @property (strong, nonatomic) NSString *selectedLon;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *place;
 
 @end
