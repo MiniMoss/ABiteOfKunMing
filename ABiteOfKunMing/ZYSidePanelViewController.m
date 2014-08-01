@@ -8,20 +8,19 @@
 
 #import "ZYSidePanelViewController.h"
 
-#define SHOWLOGINVIEW_SEGUE_KEY @"showLoginView"
-
 @interface ZYSidePanelViewController ()
 
 @end
 
 @implementation ZYSidePanelViewController
 
--(void)awakeFromNib
+- (void)awakeFromNib
 {
     [self setLeftPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"leftViewController"]];
     [self setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"centerViewController"]];
     
 }
+
 
 
 

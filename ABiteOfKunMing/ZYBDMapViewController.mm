@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
     //初始化BMKLocationService
@@ -35,6 +36,7 @@
     [_locService startUserLocationService];
     
     self.view = mapView;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,7 +71,7 @@
 
 #pragma mark - Actions
 
--(IBAction)showActionSheet:(id)sender
+- (IBAction)showActionSheet:(id)sender
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"选择导航"
                                                              delegate:self

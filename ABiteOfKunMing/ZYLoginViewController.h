@@ -10,7 +10,15 @@
 #import "ZYAppDelegate.h"
 #import "ZYWeiBoManager.h"
 
+@protocol ZYLoginViewControllerDelegate  <NSObject>
+
+- (void)initData;
+
+@end
+
 @interface ZYLoginViewController : UIViewController
+
+@property (weak, nonatomic) id <ZYLoginViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIImageView *lunchImageLayout;
 

@@ -10,9 +10,10 @@
 		DF342706197BA73900E24C61 /* ZYWeiBoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342705197BA73900E24C61 /* ZYWeiBoManager.m */; };
 		DF34270A197BB61800E24C61 /* ZYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342709197BB61800E24C61 /* ZYLoginViewController.m */; };
 		DF34270F197BC86A00E24C61 /* ZYSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF34270E197BC86A00E24C61 /* ZYSidePanelViewController.m */; };
-		DF342712197BC8E100E24C61 /* ZYCenterPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342711197BC8E100E24C61 /* ZYCenterPanelViewController.m */; };
+		DF342712197BC8E100E24C61 /* ZYTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342711197BC8E100E24C61 /* ZYTableViewController.m */; };
 		DF342715197BC90B00E24C61 /* ZYLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */; };
 		DF40D25E197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */; };
+		DF5F3293198B43B500B64280 /* ZYreloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5F3292198B43B500B64280 /* ZYreloginViewController.m */; };
 		DF745B4D197960B80033D336 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4C197960B80033D336 /* Foundation.framework */; };
 		DF745B4F197960B80033D336 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4E197960B80033D336 /* CoreGraphics.framework */; };
 		DF745B51197960B80033D336 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B50197960B80033D336 /* UIKit.framework */; };
@@ -79,12 +80,14 @@
 		DF342709197BB61800E24C61 /* ZYLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLoginViewController.m; sourceTree = "<group>"; };
 		DF34270D197BC86A00E24C61 /* ZYSidePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYSidePanelViewController.h; sourceTree = "<group>"; };
 		DF34270E197BC86A00E24C61 /* ZYSidePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYSidePanelViewController.m; sourceTree = "<group>"; };
-		DF342710197BC8E100E24C61 /* ZYCenterPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCenterPanelViewController.h; sourceTree = "<group>"; };
-		DF342711197BC8E100E24C61 /* ZYCenterPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCenterPanelViewController.m; sourceTree = "<group>"; };
+		DF342710197BC8E100E24C61 /* ZYTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYTableViewController.h; sourceTree = "<group>"; };
+		DF342711197BC8E100E24C61 /* ZYTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYTableViewController.m; sourceTree = "<group>"; };
 		DF342713197BC90B00E24C61 /* ZYLeftPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLeftPanelViewController.h; sourceTree = "<group>"; };
 		DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLeftPanelViewController.m; sourceTree = "<group>"; };
 		DF40D25C197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCellOfCenterPanelTableView.h; sourceTree = "<group>"; };
 		DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCellOfCenterPanelTableView.m; sourceTree = "<group>"; };
+		DF5F3291198B43B500B64280 /* ZYreloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYreloginViewController.h; path = ../ZYreloginViewController.h; sourceTree = "<group>"; };
+		DF5F3292198B43B500B64280 /* ZYreloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYreloginViewController.m; path = ../ZYreloginViewController.m; sourceTree = "<group>"; };
 		DF745B49197960B80033D336 /* ABiteOfKunMing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABiteOfKunMing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF745B4C197960B80033D336 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DF745B4E197960B80033D336 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -263,6 +266,8 @@
 			children = (
 				DF342708197BB61800E24C61 /* ZYLoginViewController.h */,
 				DF342709197BB61800E24C61 /* ZYLoginViewController.m */,
+				DF5F3291198B43B500B64280 /* ZYreloginViewController.h */,
+				DF5F3292198B43B500B64280 /* ZYreloginViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -272,10 +277,10 @@
 			children = (
 				DF34270D197BC86A00E24C61 /* ZYSidePanelViewController.h */,
 				DF34270E197BC86A00E24C61 /* ZYSidePanelViewController.m */,
-				DF342710197BC8E100E24C61 /* ZYCenterPanelViewController.h */,
-				DF342711197BC8E100E24C61 /* ZYCenterPanelViewController.m */,
 				DF342713197BC90B00E24C61 /* ZYLeftPanelViewController.h */,
 				DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */,
+				DF342710197BC8E100E24C61 /* ZYTableViewController.h */,
+				DF342711197BC8E100E24C61 /* ZYTableViewController.m */,
 				DF40D25C197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.h */,
 				DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */,
 			);
@@ -675,11 +680,12 @@
 				DF745C04197963D70033D336 /* AFURLResponseSerialization.m in Sources */,
 				DF745C12197963D70033D336 /* UIAlertView+AFNetworking.m in Sources */,
 				DF745C02197963D70033D336 /* AFURLConnectionOperation.m in Sources */,
-				DF342712197BC8E100E24C61 /* ZYCenterPanelViewController.m in Sources */,
+				DF342712197BC8E100E24C61 /* ZYTableViewController.m in Sources */,
 				DF342706197BA73900E24C61 /* ZYWeiBoManager.m in Sources */,
 				DF745C0E197963D70033D336 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				DF745C01197963D70033D336 /* AFSecurityPolicy.m in Sources */,
 				DF745C09197963D70033D336 /* JASidePanelController.m in Sources */,
+				DF5F3293198B43B500B64280 /* ZYreloginViewController.m in Sources */,
 				DF745BFF197963D70033D336 /* AFHTTPSessionManager.m in Sources */,
 				DF745C15197963D70033D336 /* UIProgressView+AFNetworking.m in Sources */,
 				DF745C03197963D70033D336 /* AFURLRequestSerialization.m in Sources */,

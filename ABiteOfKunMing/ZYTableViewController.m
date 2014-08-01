@@ -6,8 +6,9 @@
 //  Copyright (c) 2014年 Yun.Zou. All rights reserved.
 //
 
-#import "ZYCenterPanelViewController.h"
+#import "ZYTableViewController.h"
 #import "ZYCellDetailViewController.h"
+#import "ZYLoginViewController.h"
 
 #define BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=5&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
@@ -19,7 +20,7 @@
 #define TEST_TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=10&lastid=0&name=hua19761110&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
 
-@interface ZYCenterPanelViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ZYTableViewController ()<UITableViewDelegate, UITableViewDataSource,ZYLoginViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSString *selectedLat;
@@ -30,52 +31,62 @@
 
 @end
 
-@implementation ZYCenterPanelViewController
+@implementation ZYTableViewController
 
 -(ZYAppDelegate *)appDelegate
 {
     return (ZYAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    if (![self appDelegate].wbManager.accessToken) {
+//        [self performSegueWithIdentifier:@"showLoginView" sender:self];
+//    }else if([self appDelegate].wbManager.accessToken){
+//        [self dismissViewControllerAnimated:NO completion:nil];
+//    }
+//}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (![self appDelegate].wbManager.accessToken) {
+        [self performSegueWithIdentifier:@"showLoginView" sender:self];
+    }else if([self appDelegate].wbManager.accessToken){
+        [self initData];
+    }
+
+    //[self performSegueWithIdentifier:@"showLoginView" sender:self];
     
     _dataSource = [[NSMutableArray alloc] init];
     
     self.WBDataTableView.delegate = self;
     self.WBDataTableView.dataSource = self;
     
-    [self initData];
-    
     // setup pull-to-refresh
     [_WBDataTableView addPullToRefreshWithActionHandler:^{
         [self insertRowAtTop];
     }];
-    
     // setup infinite scrolling
     [_WBDataTableView addInfiniteScrollingWithActionHandler:^{
         [self insertRowAtBottom];
-    }];
+    }];    
     
 }
 
 
-#pragma mark - Actions
-
-- (IBAction)showLeft:(id)sender
-{
-    [self.sidePanelController showLeftPanelAnimated:YES];
-}
+#pragma mark - loginViewControllerDelegate
 
 - (void)initData
 {
+    
     //test URL
     //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     NSString *urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    NSLog(@"%@",urlStr);
+    //NSLog(@"%@",urlStr);
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -88,12 +99,15 @@
         for (int i = 0; i < [arrInfo count]; i++) {
             [_dataSource addObject:arrInfo[i]];
         }
+        [self dismissViewControllerAnimated:YES completion:nil];
         [self.WBDataTableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         NSLog(@"%@", error);
     }];
     [operation start];
 }
+
+#pragma mark - Actions
 
 - (void)insertRowAtTop
 {
@@ -159,6 +173,23 @@
     [_WBDataTableView.infiniteScrollingView stopAnimating];
 }
 
+- (UIImage*)circleImage:(UIImage*)image withParam:(CGFloat)inset {
+    UIGraphicsBeginImageContext(image.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 2);
+    CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
+    CGRect rect = CGRectMake(inset, inset, image.size.width - inset * 2.0f, image.size.height - inset * 2.0f);
+    CGContextAddEllipseInRect(context, rect);
+    CGContextClip(context);
+    
+    [image drawInRect:rect];
+    CGContextAddEllipseInRect(context, rect);
+    CGContextStrokePath(context);
+    UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newimg;
+}
+
 - (void)loadCellImage:(ZYCellOfCenterPanelTableView *)cell indexPath:(NSIndexPath *)indexPath
 {
     __weak ZYCellOfCenterPanelTableView *weakCell = cell;
@@ -170,7 +201,7 @@
         [cell.imageView setImageWithURLRequest:request
                               placeholderImage:[UIImage imageNamed:@"placeHolder"]
                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                           weakCell.cellImage.image = image;
+                                           weakCell.cellImage.image = [self circleImage:image withParam:1];
                                        } failure:nil];
         
     }else{
@@ -186,6 +217,9 @@
         cellDetailViewController.selectedLon = _selectedLon;
         cellDetailViewController.name = _name;
         cellDetailViewController.place = _place;
+    }else if ([segue.identifier isEqualToString:@"showLoginView"]){
+        ZYLoginViewController *loginViewController = (ZYLoginViewController *)segue.destinationViewController;
+        loginViewController.delegate = self;
     }
 }
 

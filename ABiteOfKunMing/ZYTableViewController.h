@@ -16,6 +16,6 @@
 #import "SVPullToRefresh.h"
 #import "ZYCellOfCenterPanelTableView.h"
 
-@interface ZYCenterPanelViewController : UIViewController
+@interface ZYTableViewController : UIViewController
 
 @end

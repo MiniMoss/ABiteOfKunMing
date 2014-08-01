@@ -13,8 +13,7 @@
 
 @interface ZYCellDetailViewController ()
 
-@property (strong, nonatomic) IBOutlet UILabel *lableLat;
-@property (strong, nonatomic) IBOutlet UILabel *lableLon;
+@property (strong, nonatomic) IBOutlet UILabel *lablePlace;
 
 
 @end
@@ -25,14 +24,10 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationItem.title = _name;
-    self.lableLon.text = _place;
+    self.lablePlace.text = _place;
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
 
 #pragma mark - Action
 

@@ -1,19 +1,21 @@
 //
-//  ZYLoginViewController.m
+//  ZYreloginViewController.m
 //  ABiteOfKunMing
 //
-//  Created by zCloud on 14-7-20.
+//  Created by zCloud on 14-8-1.
 //  Copyright (c) 2014年 Yun.Zou. All rights reserved.
 //
 
-#import "ZYLoginViewController.h"
+#import "ZYreloginViewController.h"
 
+#define SHOWTABLEVIEW_SEGUE_ID_KEY @"showTableView"
 
-@interface ZYLoginViewController ()<ZYWeiBoManagerDelegate>
+@interface ZYreloginViewController ()<ZYWeiBoManagerDelegate>
+
 
 @end
 
-@implementation ZYLoginViewController
+@implementation ZYreloginViewController
 
 -(ZYAppDelegate *)appDelegate
 {
@@ -45,8 +47,9 @@
     if ([self appDelegate].wbManager.isAccessTokenValid == NO) {
         _lunchImageLayout.hidden = YES;
     }else if([self appDelegate].wbManager.isAccessTokenValid == YES){
-        [self.delegate initData];        
+        [self performSegueWithIdentifier:SHOWTABLEVIEW_SEGUE_ID_KEY sender:self];
     }
 }
+
 
 @end
