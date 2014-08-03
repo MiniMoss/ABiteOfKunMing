@@ -61,6 +61,7 @@
     BMKCoordinateRegion viewRegion = BMKCoordinateRegionMakeWithDistance(annotation.coordinate, 1500, 1500);
     [mapView setRegion:viewRegion animated:YES];
     [mapView addAnnotation:annotation];
+    [mapView selectAnnotation:annotation animated:YES]; 
 }
 
 - (void)viewWillDisappear:(BOOL)animated

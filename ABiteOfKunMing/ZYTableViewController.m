@@ -40,16 +40,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if([self appDelegate].wbManager.loginFlag){
+    if([self appDelegate].wbManager.loginFlag){    //loginView trigger
         [self dismissViewControllerAnimated:NO completion:nil];
         [_WBDataTableView triggerPullToRefresh];
-    }
-    
-    if([self appDelegate].wbManager.accessToken){
+    }else if([self appDelegate].wbManager.reLoginFlag){   //reLoginView trigger
         [_WBDataTableView triggerPullToRefresh];
     }
-
-    
 }
 
 
@@ -76,11 +72,7 @@
         [self performSegueWithIdentifier:@"showLoginView" sender:self];
     }else if([self appDelegate].wbManager.accessToken){
         [self initData];
-        //[_WBDataTableView triggerPullToRefresh];
     }
-    
-
-
 }
 
 

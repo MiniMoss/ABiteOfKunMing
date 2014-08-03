@@ -8,6 +8,7 @@
 
 #import "ZYCellDetailViewController.h"
 #import "ZYBDMapViewController.h"
+#import "ZYAppDelegate.h"
 
 #define SHOWMAP_SEGUE_ID_KEY @"showMap"
 
@@ -20,12 +21,19 @@
 
 @implementation ZYCellDetailViewController
 
+-(ZYAppDelegate *)appDelegate
+{
+    return (ZYAppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.navigationItem.title = _name;
     self.lablePlace.text = _place;
+    [self appDelegate].wbManager.loginFlag = NO;
+    [self appDelegate].wbManager.reLoginFlag = NO;
 }
 
 
