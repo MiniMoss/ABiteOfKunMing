@@ -38,43 +38,49 @@
     return (ZYAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    if (![self appDelegate].wbManager.accessToken) {
-//        [self performSegueWithIdentifier:@"showLoginView" sender:self];
-//    }else if([self appDelegate].wbManager.accessToken){
-//        [self dismissViewControllerAnimated:NO completion:nil];
-//    }
-//}
+- (void)viewDidAppear:(BOOL)animated
+{
+    if([self appDelegate].wbManager.loginFlag){
+        [self dismissViewControllerAnimated:NO completion:nil];
+        [_WBDataTableView triggerPullToRefresh];
+    }
+    
+    if([self appDelegate].wbManager.accessToken){
+        [_WBDataTableView triggerPullToRefresh];
+    }
+
+    
+}
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    if (![self appDelegate].wbManager.accessToken) {
-        [self performSegueWithIdentifier:@"showLoginView" sender:self];
-    }else if([self appDelegate].wbManager.accessToken){
-        [self initData];
-    }
-
-    //[self performSegueWithIdentifier:@"showLoginView" sender:self];
-    
     _dataSource = [[NSMutableArray alloc] init];
     
     self.WBDataTableView.delegate = self;
     self.WBDataTableView.dataSource = self;
     
+    __weak ZYTableViewController *weakSelf = self;
     // setup pull-to-refresh
     [_WBDataTableView addPullToRefreshWithActionHandler:^{
-        [self insertRowAtTop];
+        [weakSelf insertRowAtTop];
     }];
     // setup infinite scrolling
     [_WBDataTableView addInfiniteScrollingWithActionHandler:^{
-        [self insertRowAtBottom];
-    }];    
+        [weakSelf insertRowAtBottom];
+    }];
     
+    if (![self appDelegate].wbManager.accessToken) {
+        [self performSegueWithIdentifier:@"showLoginView" sender:self];
+    }else if([self appDelegate].wbManager.accessToken){
+        [self initData];
+        //[_WBDataTableView triggerPullToRefresh];
+    }
+    
+
+
 }
 
 
@@ -82,7 +88,7 @@
 
 - (void)initData
 {
-    
+
     //test URL
     //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     NSString *urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
@@ -99,12 +105,13 @@
         for (int i = 0; i < [arrInfo count]; i++) {
             [_dataSource addObject:arrInfo[i]];
         }
-        [self dismissViewControllerAnimated:YES completion:nil];
         [self.WBDataTableView reloadData];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         NSLog(@"%@", error);
     }];
     [operation start];
+
 }
 
 #pragma mark - Actions
@@ -201,7 +208,8 @@
         [cell.imageView setImageWithURLRequest:request
                               placeholderImage:[UIImage imageNamed:@"placeHolder"]
                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                           weakCell.cellImage.image = [self circleImage:image withParam:1];
+                                           //weakCell.cellImage.image = [self circleImage:image withParam:1];
+                                           weakCell.cellImage.image = image;
                                        } failure:nil];
         
     }else{

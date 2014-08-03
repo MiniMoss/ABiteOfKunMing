@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *appKey;
 @property (strong, nonatomic) NSString *appSecrect;
 @property BOOL isAccessTokenValid;
+@property BOOL loginFlag;
 
 @property (weak) id <ZYWeiBoManagerDelegate> delegate;
 

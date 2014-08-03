@@ -33,6 +33,7 @@ BMKMapManager *_mapManager;
     if (!ret) {
         NSLog(@"manager start failed!");
     }
+    
     return YES;
 }
 							
