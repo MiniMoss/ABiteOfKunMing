@@ -41,7 +41,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     if([self appDelegate].wbManager.loginFlag){    //loginView trigger
-        [self dismissViewControllerAnimated:NO completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
         [_WBDataTableView triggerPullToRefresh];
     }else if([self appDelegate].wbManager.reLoginFlag){   //reLoginView trigger
         [_WBDataTableView triggerPullToRefresh];

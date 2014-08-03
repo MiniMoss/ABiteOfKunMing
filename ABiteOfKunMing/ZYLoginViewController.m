@@ -47,6 +47,7 @@
     }else if([self appDelegate].wbManager.isAccessTokenValid == YES){
         [self.delegate initData];
         [self appDelegate].wbManager.loginFlag = YES;
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
