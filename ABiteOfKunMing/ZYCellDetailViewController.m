@@ -8,14 +8,15 @@
 
 #import "ZYCellDetailViewController.h"
 #import "ZYBDMapViewController.h"
+#import "ZYImageCollectionViewController.h"
 #import "ZYAppDelegate.h"
 
 #define SHOWMAP_SEGUE_ID_KEY @"showMap"
+#define SHOWDETAILIMAGE_SEGUE_ID_KEY @"showDetailImage"
 
 @interface ZYCellDetailViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *lablePlace;
-
 
 @end
 
@@ -46,7 +47,9 @@
         BDMapViewController.pinLat = _selectedLat;
         BDMapViewController.pinLon = _selectedLon;
         BDMapViewController.name = _name;
-        
+    }else if ([segue.identifier isEqualToString:SHOWDETAILIMAGE_SEGUE_ID_KEY]){
+        ZYImageCollectionViewController *DetailImageViewController = segue.destinationViewController;
+        DetailImageViewController.detailImageUrlArr = _detailImageUrlArr;
     }
 }
 

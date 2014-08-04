@@ -8,6 +8,7 @@
 
 #import "ZYCellOfCenterPanelTableView.h"
 
+
 @implementation ZYCellOfCenterPanelTableView
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

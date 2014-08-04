@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSString *selectedLon;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *place;
+@property (strong, nonatomic) NSMutableArray *detailImageUrlArr;
 @property (weak, nonatomic) IBOutlet UITableView *WBDataTableView;
 
 @end
@@ -59,9 +60,8 @@
     [self appDelegate].checkAuth.delegate =self;
     [[self appDelegate].checkAuth checkAuthValid];
     
-
-    
-    [NSThread sleepForTimeInterval:1.0];
+    //launchImage加载时间
+    //[NSThread sleepForTimeInterval:1.0];
     
     _dataSource = [[NSMutableArray alloc] init];
     
@@ -130,7 +130,7 @@
 
 }
 
-#pragma mark - Actions
+#pragma mark - Methods
 
 - (void)insertRowAtTop
 {
@@ -244,6 +244,7 @@
                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                            //weakCell.cellImage.image = [self circleImage:image withParam:1];
                                            weakCell.cellImage.image = image;
+                                           weakCell.cellImage.contentMode =UIViewContentModeScaleAspectFit;
                                        } failure:nil];
         
     }else{
@@ -259,6 +260,7 @@
         cellDetailViewController.selectedLon = _selectedLon;
         cellDetailViewController.name = _name;
         cellDetailViewController.place = _place;
+        cellDetailViewController.detailImageUrlArr = _detailImageUrlArr;
     }else if ([segue.identifier isEqualToString:@"showLoginView"]){
         ZYLoginViewController *loginViewController = (ZYLoginViewController *)segue.destinationViewController;
         loginViewController.delegate = self;
@@ -303,6 +305,7 @@
     _selectedLon = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"longitude"]];
     _name = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"origtext"]];
     _place = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
+    _detailImageUrlArr = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"image"];
     [self performSegueWithIdentifier:@"showCellDetail" sender:self];
 }
 

@@ -14,6 +14,8 @@
 		DF342715197BC90B00E24C61 /* ZYLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */; };
 		DF40D25E197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */; };
 		DF40F4AB198E972D0051E177 /* ZYCheckAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = DF40F4AA198E972D0051E177 /* ZYCheckAuth.m */; };
+		DF440607198F293600016042 /* ZYImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF440606198F293600016042 /* ZYImageCollectionViewController.m */; };
+		DF44060A198F322B00016042 /* ZYImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF440609198F322B00016042 /* ZYImageCollectionViewCell.m */; };
 		DF5F3293198B43B500B64280 /* ZYreloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5F3292198B43B500B64280 /* ZYreloginViewController.m */; };
 		DF745B4D197960B80033D336 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4C197960B80033D336 /* Foundation.framework */; };
 		DF745B4F197960B80033D336 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4E197960B80033D336 /* CoreGraphics.framework */; };
@@ -89,6 +91,10 @@
 		DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCellOfCenterPanelTableView.m; sourceTree = "<group>"; };
 		DF40F4A9198E972D0051E177 /* ZYCheckAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCheckAuth.h; sourceTree = "<group>"; };
 		DF40F4AA198E972D0051E177 /* ZYCheckAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCheckAuth.m; sourceTree = "<group>"; };
+		DF440605198F293600016042 /* ZYImageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageCollectionViewController.h; sourceTree = "<group>"; };
+		DF440606198F293600016042 /* ZYImageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageCollectionViewController.m; sourceTree = "<group>"; };
+		DF440608198F322B00016042 /* ZYImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageCollectionViewCell.h; sourceTree = "<group>"; };
+		DF440609198F322B00016042 /* ZYImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageCollectionViewCell.m; sourceTree = "<group>"; };
 		DF5F3291198B43B500B64280 /* ZYreloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYreloginViewController.h; path = ../ZYreloginViewController.h; sourceTree = "<group>"; };
 		DF5F3292198B43B500B64280 /* ZYreloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYreloginViewController.m; path = ../ZYreloginViewController.m; sourceTree = "<group>"; };
 		DF745B49197960B80033D336 /* ABiteOfKunMing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABiteOfKunMing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +305,17 @@
 			name = BaiDuMap;
 			sourceTree = "<group>";
 		};
+		DF4405FE198F17F300016042 /* Image CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				DF440605198F293600016042 /* ZYImageCollectionViewController.h */,
+				DF440606198F293600016042 /* ZYImageCollectionViewController.m */,
+				DF440608198F322B00016042 /* ZYImageCollectionViewCell.h */,
+				DF440609198F322B00016042 /* ZYImageCollectionViewCell.m */,
+			);
+			name = "Image CollectionView";
+			sourceTree = "<group>";
+		};
 		DF745B40197960B80033D336 = {
 			isa = PBXGroup;
 			children = (
@@ -351,7 +368,6 @@
 				DF342707197BB5EA00E24C61 /* Login */,
 				DF34270B197BC79600E24C61 /* TableView */,
 				DF7B2770197BFE2700BCCA0F /* Detail View */,
-				DF34270C197BC7CB00E24C61 /* BaiDuMap */,
 				DF745B53197960B80033D336 /* Supporting Files */,
 			);
 			path = ABiteOfKunMing;
@@ -564,6 +580,8 @@
 			children = (
 				DF7B2771197C1A4B00BCCA0F /* ZYCellDetailViewController.h */,
 				DF7B2772197C1A4B00BCCA0F /* ZYCellDetailViewController.m */,
+				DF4405FE198F17F300016042 /* Image CollectionView */,
+				DF34270C197BC7CB00E24C61 /* BaiDuMap */,
 			);
 			name = "Detail View";
 			sourceTree = "<group>";
@@ -691,10 +709,12 @@
 				DF745C0E197963D70033D336 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				DF745C01197963D70033D336 /* AFSecurityPolicy.m in Sources */,
 				DF745C09197963D70033D336 /* JASidePanelController.m in Sources */,
+				DF440607198F293600016042 /* ZYImageCollectionViewController.m in Sources */,
 				DF5F3293198B43B500B64280 /* ZYreloginViewController.m in Sources */,
 				DF745BFF197963D70033D336 /* AFHTTPSessionManager.m in Sources */,
 				DF745C15197963D70033D336 /* UIProgressView+AFNetworking.m in Sources */,
 				DF745C03197963D70033D336 /* AFURLRequestSerialization.m in Sources */,
+				DF44060A198F322B00016042 /* ZYImageCollectionViewCell.m in Sources */,
 				DF745C13197963D70033D336 /* UIButton+AFNetworking.m in Sources */,
 				DF745C05197963D70033D336 /* AFURLSessionManager.m in Sources */,
 				DF745B5D197960B80033D336 /* ZYAppDelegate.m in Sources */,
