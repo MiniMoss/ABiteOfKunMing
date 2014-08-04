@@ -12,6 +12,4 @@
 
 @interface ZYreloginViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *lunchImageLayout;
-
 @end

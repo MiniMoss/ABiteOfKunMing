@@ -26,17 +26,10 @@
                                     <action selector="Login:" destination="Tjy-Be-Lt8" eventType="touchUpInside" id="qp5-yq-EOT"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ImageLayout" translatesAutoresizingMaskIntoConstraints="NO" id="hNx-lS-4rx">
-                                <rect key="frame" x="-10" y="-15" width="330" height="583"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ecc-L7-pDZ"/>
-                    <connections>
-                        <outlet property="lunchImageLayout" destination="hNx-lS-4rx" id="AZt-4J-RCD"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvh-Q5-fNz" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,7 +80,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <segue destination="d15-2m-ruO" kind="modal" identifier="showReloginView" id="sHV-WD-Puc"/>
+                        <segue destination="d15-2m-ruO" kind="modal" identifier="showReloginView" modalTransitionStyle="flipHorizontal" id="sHV-WD-Puc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6O-8Q-b9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -106,24 +99,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="503" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="253" sectionHeaderHeight="1" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FiZ-0u-LVK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="503" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" sectionHeaderHeight="1" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FiZ-0u-LVK">
                                 <rect key="frame" x="0.0" y="66" width="320" height="503"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WBDataCell" rowHeight="253" id="xax-Bg-fxR" customClass="ZYCellOfCenterPanelTableView">
-                                        <rect key="frame" x="0.0" y="65" width="320" height="253"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WBDataCell" rowHeight="137" id="xax-Bg-fxR" customClass="ZYCellOfCenterPanelTableView">
+                                        <rect key="frame" x="0.0" y="65" width="320" height="137"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xax-Bg-fxR" id="Os5-yf-f1G">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="252"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvp-nr-fJl">
-                                                    <rect key="frame" x="48" y="48" width="191" height="191"/>
+                                                    <rect key="frame" x="11" y="18" width="100" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zu-MU-Giy">
-                                                    <rect key="frame" x="76" y="11" width="138" height="29"/>
+                                                    <rect key="frame" x="134" y="55" width="138" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
@@ -146,7 +139,7 @@
                     <connections>
                         <outlet property="WBDataTableView" destination="FiZ-0u-LVK" id="leT-PL-Mcm"/>
                         <segue destination="cxc-X7-Ldp" kind="push" identifier="showCellDetail" id="Si7-wM-7W3"/>
-                        <segue destination="Tjy-Be-Lt8" kind="modal" identifier="showLoginView" id="7R7-Ez-v6L"/>
+                        <segue destination="Tjy-Be-Lt8" kind="modal" identifier="showLoginView" modalTransitionStyle="flipHorizontal" id="7R7-Ez-v6L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45y-LB-efh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,16 +244,11 @@
                                     <action selector="Login:" destination="d15-2m-ruO" eventType="touchUpInside" id="5u6-aQ-njd"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ImageLayout" translatesAutoresizingMaskIntoConstraints="NO" id="MpQ-14-HYL">
-                                <rect key="frame" x="-10" y="-15" width="330" height="583"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iwd-Rg-WXB"/>
                     <connections>
-                        <outlet property="lunchImageLayout" destination="MpQ-14-HYL" id="fbX-QY-OGG"/>
                         <segue destination="tyk-dR-mcf" kind="modal" identifier="showTableView" id="9Ws-CJ-PgE"/>
                     </connections>
                 </viewController>
@@ -269,9 +257,6 @@
             <point key="canvasLocation" x="4285" y="-1443"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ImageLayout" width="320" height="568"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

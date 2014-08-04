@@ -43,7 +43,7 @@
 -(void)isAuthValid
 {
     if ([self appDelegate].wbManager.isAccessTokenValid == NO) {
-        _lunchImageLayout.hidden = YES;
+        //_lunchImageLayout.hidden = YES;
     }else if([self appDelegate].wbManager.isAccessTokenValid == YES){
         [self.delegate initData];
         [self appDelegate].wbManager.loginFlag = YES;

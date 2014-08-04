@@ -20,6 +20,5 @@
 
 @property (weak, nonatomic) id <ZYLoginViewControllerDelegate> delegate;
 
-@property (weak, nonatomic) IBOutlet UIImageView *lunchImageLayout;
 
 @end

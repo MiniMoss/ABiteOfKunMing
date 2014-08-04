@@ -9,6 +9,7 @@
 #import "ZYTableViewController.h"
 #import "ZYCellDetailViewController.h"
 #import "ZYLoginViewController.h"
+#import "ZYCheckAuth.h"
 
 #define BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=5&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
@@ -20,7 +21,7 @@
 #define TEST_TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=10&lastid=0&name=hua19761110&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
 
-@interface ZYTableViewController ()<UITableViewDelegate, UITableViewDataSource,ZYLoginViewControllerDelegate>
+@interface ZYTableViewController ()<UITableViewDelegate, UITableViewDataSource,ZYCheckAuthDelegate,ZYLoginViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSString *selectedLat;
@@ -43,8 +44,10 @@
     if([self appDelegate].wbManager.loginFlag){    //loginView trigger
         [self dismissViewControllerAnimated:YES completion:nil];
         [_WBDataTableView triggerPullToRefresh];
+        _WBDataTableView.showsPullToRefresh = YES;
     }else if([self appDelegate].wbManager.reLoginFlag){   //reLoginView trigger
         [_WBDataTableView triggerPullToRefresh];
+        _WBDataTableView.showsPullToRefresh = YES;
     }
 }
 
@@ -53,12 +56,20 @@
 {
     [super viewDidLoad];
     
+    [self appDelegate].checkAuth.delegate =self;
+    [[self appDelegate].checkAuth checkAuthValid];
+    
+
+    
+    [NSThread sleepForTimeInterval:1.0];
+    
     _dataSource = [[NSMutableArray alloc] init];
     
     self.WBDataTableView.delegate = self;
     self.WBDataTableView.dataSource = self;
     
     __weak ZYTableViewController *weakSelf = self;
+    
     // setup pull-to-refresh
     [_WBDataTableView addPullToRefreshWithActionHandler:^{
         [weakSelf insertRowAtTop];
@@ -68,13 +79,21 @@
         [weakSelf insertRowAtBottom];
     }];
     
-    if (![self appDelegate].wbManager.accessToken) {
-        [self performSegueWithIdentifier:@"showLoginView" sender:self];
-    }else if([self appDelegate].wbManager.accessToken){
-        [self initData];
-    }
+    _WBDataTableView.showsPullToRefresh = NO;
 }
 
+#pragma mark - checkAuthDelegate
+
+- (void)isAuthValid
+{
+    if (![self appDelegate].checkAuth.accessToken) {
+        [self performSegueWithIdentifier:@"showLoginView" sender:self];
+    }else if([self appDelegate].checkAuth.accessToken){
+        [self initData];
+        [_WBDataTableView triggerPullToRefresh];
+        _WBDataTableView.showsPullToRefresh = YES;
+    }    
+}
 
 #pragma mark - loginViewControllerDelegate
 
@@ -83,7 +102,12 @@
 
     //test URL
     //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    NSString *urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    NSString *urlStr;
+    if([self appDelegate].checkAuth.accessToken){
+        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
+    }else if([self appDelegate].wbManager.accessToken) {
+        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    }
     //NSLog(@"%@",urlStr);
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -112,7 +136,15 @@
 {
     //test URL
     //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    NSString *urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    
+    __weak ZYTableViewController *weakSelf = self;
+    NSString *urlStr;
+    if([self appDelegate].checkAuth.accessToken){
+        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
+    }else if([self appDelegate].wbManager.accessToken) {
+        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    }
+
     //NSLog(@"%@",urlStr);
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -128,23 +160,31 @@
             [_dataSource addObject:arrInfo[i]];
         }
         [self.WBDataTableView reloadData];
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         NSLog(@"%@", error);
     }];
     [operation start];
-    [_WBDataTableView.pullToRefreshView stopAnimating];
+    [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
     
 }
 
 - (void)insertRowAtBottom
 {
+     __weak ZYTableViewController *weakSelf = self;
     //pageflag = 1 结合pagetime = last timestamp向下翻页更新微博
     NSString *timeStamp = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:[_dataSource count] - 1] objectForKey:@"timestamp"]];
     
     //test URL
     //NSString *urlStr = [NSString stringWithFormat:TEST_TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    
-    NSString *urlStr = [NSString stringWithFormat:TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    NSString *urlStr;
+    if([self appDelegate].checkAuth.accessToken){
+        urlStr = [NSString stringWithFormat:TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
+    }else if([self appDelegate].wbManager.accessToken) {
+        urlStr = [NSString stringWithFormat:TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    }
+
+
     //NSLog(@"%@",urlStr);
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -162,14 +202,16 @@
                 [_dataSource addObject:arrInfo[i]];
             }
             [self.WBDataTableView reloadData];
+
         }else if([checkData isEqualToString:@"have no tweet"]){
-            [_WBDataTableView.infiniteScrollingView stopAnimating];
+            [weakSelf.WBDataTableView.infiniteScrollingView stopAnimating];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         NSLog(@"%@", error);
     }];
     [operation start];
-    [_WBDataTableView.infiniteScrollingView stopAnimating];
+    [weakSelf.WBDataTableView.infiniteScrollingView stopAnimating];
+   
 }
 
 - (UIImage*)circleImage:(UIImage*)image withParam:(CGFloat)inset {

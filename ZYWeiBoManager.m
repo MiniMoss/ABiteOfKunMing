@@ -54,7 +54,7 @@
     [self.wbapi cancelAuth];
 }
 
-#pragma mark WeiboAuthDelegate
+#pragma mark - WeiboAuthDelegate
 
 /**
  * @brief   重刷授权成功后的回调

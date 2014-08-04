@@ -23,6 +23,14 @@ BMKMapManager *_mapManager;
     return _wbManager;
 }
 
+- (ZYCheckAuth *) checkAuth
+{
+    if (!_checkAuth) {
+        _checkAuth = [[ZYCheckAuth alloc] init];
+    }
+    return _checkAuth;
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
