@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9DCD2EF1990657800FCAB71 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = B9DCD2EE1990657800FCAB71 /* Readme.md */; };
 		DF342706197BA73900E24C61 /* ZYWeiBoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342705197BA73900E24C61 /* ZYWeiBoManager.m */; };
 		DF34270A197BB61800E24C61 /* ZYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342709197BB61800E24C61 /* ZYLoginViewController.m */; };
 		DF34270F197BC86A00E24C61 /* ZYSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF34270E197BC86A00E24C61 /* ZYSidePanelViewController.m */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B9DCD2EE1990657800FCAB71 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		DF342704197BA73900E24C61 /* ZYWeiBoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWeiBoManager.h; sourceTree = "<group>"; };
 		DF342705197BA73900E24C61 /* ZYWeiBoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWeiBoManager.m; sourceTree = "<group>"; };
 		DF342708197BB61800E24C61 /* ZYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLoginViewController.h; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 		DF745B40197960B80033D336 = {
 			isa = PBXGroup;
 			children = (
+				B9DCD2EE1990657800FCAB71 /* Readme.md */,
 				DF745B5E197960B80033D336 /* Main.storyboard */,
 				DF745B5B197960B80033D336 /* ZYAppDelegate.h */,
 				DF745B5C197960B80033D336 /* ZYAppDelegate.m */,
@@ -665,6 +668,7 @@
 			files = (
 				DF745C08197963D70033D336 /* readme.txt in Resources */,
 				DF745B65197960B80033D336 /* Images.xcassets in Resources */,
+				B9DCD2EF1990657800FCAB71 /* Readme.md in Resources */,
 				DF745C07197963D70033D336 /* mapapi.bundle in Resources */,
 				DF745B57197960B80033D336 /* InfoPlist.strings in Resources */,
 				DF745B60197960B80033D336 /* Main.storyboard in Resources */,
