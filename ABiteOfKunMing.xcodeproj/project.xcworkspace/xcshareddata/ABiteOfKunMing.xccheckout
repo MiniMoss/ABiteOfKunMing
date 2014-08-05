@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>000EB000-5045-48B4-AED9-C98ABF8E3C09</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ABiteOfKunMing</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9F9B3E27-EFF7-40FB-A302-15ECEB5D6AFB</key>
+		<string>https://github.com/zCloud1984/ABOKM.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ABiteOfKunMing.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9F9B3E27-EFF7-40FB-A302-15ECEB5D6AFB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/zCloud1984/ABOKM.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9F9B3E27-EFF7-40FB-A302-15ECEB5D6AFB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9F9B3E27-EFF7-40FB-A302-15ECEB5D6AFB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ABiteOfKunMing</string>
+		</dict>
+	</array>
+</dict>
+</plist>
