@@ -10,6 +10,8 @@
 #import "BMapKit.h"
 #import <CoreLocation/CoreLocation.h>
 
+#define APLLEMAP_URL_KEY @"http://maps.apple.com/maps?saddr=%f,%f&daddr=%f,%f"
+
 @interface ZYBDMapViewController ()<BMKMapViewDelegate,CLLocationManagerDelegate,BMKLocationServiceDelegate,UIActionSheetDelegate>
 {
     IBOutlet BMKMapView *mapView;
@@ -18,6 +20,8 @@
 @property (nonatomic, strong) BMKLocationService *locService;
 @property CLLocationCoordinate2D startCoor;
 @property CLLocationCoordinate2D endCoor;
+
+//- (void)appleNav;
 
 @end
 
@@ -70,7 +74,7 @@
     mapView.delegate = nil; // 不用时，置nil
 }
 
-#pragma mark - Actions
+#pragma mark - Methods
 
 - (IBAction)showActionSheet:(id)sender
 {
@@ -145,6 +149,19 @@
     [BMKNavigation openBaiduMapNavigation:para];
 }
 
+//- (void)appleNav
+//{
+//    CLLocationCoordinate2D startCoor;
+//    startCoor.latitude = _startCoor.latitude;
+//    startCoor.longitude = _startCoor.longitude;
+//    
+//    CLLocationCoordinate2D endCoor;
+//    endCoor.latitude = _endCoor.latitude;
+//    endCoor.longitude = _endCoor.longitude;
+//    
+//    NSString *string = [NSString stringWithFormat:APLLEMAP_URL_KEY,startCoor.latitude,startCoor.longitude,endCoor.latitude,endCoor.longitude];
+//    [[UIApplication sharedApplication]  openURL:[NSURL URLWithString:string]];
+//}
 
 #pragma mark - ActionSheet delegate
 
@@ -157,6 +174,9 @@
         case 1:
             [self webNavi];
             break;
+//        case 2:
+//            [self appleNav];
+//            break;
         default:
             break;
     }
