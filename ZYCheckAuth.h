@@ -27,5 +27,5 @@
 @property (weak) id <ZYCheckAuthDelegate> delegate;
 
 - (void)checkAuthValid;
-
+- (void)logout;
 @end

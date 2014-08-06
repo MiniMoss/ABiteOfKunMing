@@ -12,7 +12,8 @@
 
 @protocol ZYLoginViewControllerDelegate  <NSObject>
 
-- (void)initData;
+//- (void)initData;
+- (void)insertRowAtTop;
 
 @end
 

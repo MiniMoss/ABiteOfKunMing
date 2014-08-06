@@ -57,6 +57,9 @@
 {
     [super viewDidLoad];
     
+    //[[self appDelegate].wbManager logout];
+    //[[self appDelegate].checkAuth logout];
+    
     [self appDelegate].checkAuth.delegate =self;
     [[self appDelegate].checkAuth checkAuthValid];
     
@@ -89,48 +92,14 @@
     if (![self appDelegate].checkAuth.accessToken) {
         [self performSegueWithIdentifier:@"showLoginView" sender:self];
     }else if([self appDelegate].checkAuth.accessToken){
-        [self initData];
+        //[self initData];
+        [self insertRowAtTop];
         [_WBDataTableView triggerPullToRefresh];
         _WBDataTableView.showsPullToRefresh = YES;
-    }    
+    }
 }
 
 #pragma mark - loginViewControllerDelegate
-
-- (void)initData
-{
-
-    //test URL
-    //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    NSString *urlStr;
-    if([self appDelegate].checkAuth.accessToken){
-        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
-    }else if([self appDelegate].wbManager.accessToken) {
-        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-    }
-    //NSLog(@"%@",urlStr);
-    NSURL *URL = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id json) {
-        NSDictionary *dicJson=[[NSDictionary alloc]initWithDictionary:json];
-        NSDictionary *dicData = [dicJson objectForKey:@"data"];
-        NSArray *arrInfo = [dicData objectForKey:@"info"];
-        for (int i = 0; i < [arrInfo count]; i++) {
-            [_dataSource addObject:arrInfo[i]];
-        }
-        [self.WBDataTableView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        NSLog(@"%@", error);
-    }];
-    [operation start];
-
-}
-
-#pragma mark - Methods
 
 - (void)insertRowAtTop
 {
@@ -138,14 +107,16 @@
     //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     
     __weak ZYTableViewController *weakSelf = self;
+    
     NSString *urlStr;
     if([self appDelegate].checkAuth.accessToken){
         urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
     }else if([self appDelegate].wbManager.accessToken) {
         urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     }
-
+    
     //NSLog(@"%@",urlStr);
+    
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -154,13 +125,25 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id json) {
         NSDictionary *dicJson=[[NSDictionary alloc]initWithDictionary:json];
         NSDictionary *dicData = [dicJson objectForKey:@"data"];
-        NSArray *arrInfo = [dicData objectForKey:@"info"];
-        [_dataSource removeAllObjects];
-        for (int i = 0; i < [arrInfo count]; i++) {
-            [_dataSource addObject:arrInfo[i]];
+        
+        if (![dicData isEqual:NULL]) {
+            NSArray *arrInfo = [dicData objectForKey:@"info"];
+            [_dataSource removeAllObjects];
+            for (int i = 0; i < [arrInfo count]; i++) {
+                [_dataSource addObject:arrInfo[i]];
+            }
+            
+            [self.WBDataTableView reloadData];
+        }else{
+            //获取数据失败提示
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
+                                                                message:@"获取数据失败，请检查网络"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"取消"
+                                                      otherButtonTitles:@"确定", nil];
+            [alertView show];
         }
-        [self.WBDataTableView reloadData];
-
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         NSLog(@"%@", error);
     }];
@@ -169,22 +152,70 @@
     
 }
 
+//- (void)initData
+//{
+//    
+//    //test URL
+//    //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+//    NSString *urlStr;
+//    if([self appDelegate].checkAuth.accessToken){
+//        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
+//    }else if([self appDelegate].wbManager.accessToken) {
+//        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+//    }
+//    
+//    NSLog(@"%@",urlStr);
+//    
+//    NSURL *URL = [NSURL URLWithString:urlStr];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+//    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+//    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id json) {
+//        NSDictionary *dicJson=[[NSDictionary alloc]initWithDictionary:json];
+//        NSDictionary *dicData = [dicJson objectForKey:@"data"];
+//        if (![dicData isEqual:NULL]) {
+//            NSArray *arrInfo = [dicData objectForKey:@"info"];
+//            for (int i = 0; i < [arrInfo count]; i++) {
+//                [_dataSource addObject:arrInfo[i]];
+//            }
+//            
+//            [self.WBDataTableView reloadData];
+//        }else{
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Default Alert View"
+//                                                                message:@"Defalut" delegate:self cancelButtonTitle:@"Cancel"
+//                                                      otherButtonTitles:@"OK", nil];
+//            [alertView show];
+//        }
+//        
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+//        NSLog(@"%@", error);
+//    }];
+//    [operation start];
+//    
+//}
+
+#pragma mark - Methods
+
+
 - (void)insertRowAtBottom
 {
-     __weak ZYTableViewController *weakSelf = self;
+    __weak ZYTableViewController *weakSelf = self;
     //pageflag = 1 结合pagetime = last timestamp向下翻页更新微博
     NSString *timeStamp = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:[_dataSource count] - 1] objectForKey:@"timestamp"]];
     
     //test URL
     //NSString *urlStr = [NSString stringWithFormat:TEST_TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
+    
     NSString *urlStr;
     if([self appDelegate].checkAuth.accessToken){
         urlStr = [NSString stringWithFormat:TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
     }else if([self appDelegate].wbManager.accessToken) {
         urlStr = [NSString stringWithFormat:TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     }
-
-
+    
+    
     //NSLog(@"%@",urlStr);
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -202,7 +233,6 @@
                 [_dataSource addObject:arrInfo[i]];
             }
             [self.WBDataTableView reloadData];
-
         }else if([checkData isEqualToString:@"have no tweet"]){
             [weakSelf.WBDataTableView.infiniteScrollingView stopAnimating];
         }
@@ -211,25 +241,25 @@
     }];
     [operation start];
     [weakSelf.WBDataTableView.infiniteScrollingView stopAnimating];
-   
+    
 }
 
-- (UIImage*)circleImage:(UIImage*)image withParam:(CGFloat)inset {
-    UIGraphicsBeginImageContext(image.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 2);
-    CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
-    CGRect rect = CGRectMake(inset, inset, image.size.width - inset * 2.0f, image.size.height - inset * 2.0f);
-    CGContextAddEllipseInRect(context, rect);
-    CGContextClip(context);
-    
-    [image drawInRect:rect];
-    CGContextAddEllipseInRect(context, rect);
-    CGContextStrokePath(context);
-    UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newimg;
-}
+//- (UIImage*)circleImage:(UIImage*)image withParam:(CGFloat)inset {
+//    UIGraphicsBeginImageContext(image.size);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextSetLineWidth(context, 2);
+//    CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
+//    CGRect rect = CGRectMake(inset, inset, image.size.width - inset * 2.0f, image.size.height - inset * 2.0f);
+//    CGContextAddEllipseInRect(context, rect);
+//    CGContextClip(context);
+//    
+//    [image drawInRect:rect];
+//    CGContextAddEllipseInRect(context, rect);
+//    CGContextStrokePath(context);
+//    UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return newimg;
+//}
 
 - (void)loadCellImage:(ZYCellOfCenterPanelTableView *)cell indexPath:(NSIndexPath *)indexPath
 {
@@ -287,7 +317,7 @@
 {
     static NSString *CellIdentifier = @"WBDataCell";
     ZYCellOfCenterPanelTableView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
-                                                            forIndexPath:indexPath];
+                                                                         forIndexPath:indexPath];
     // Configure the cell...
     [self loadCellImage:cell indexPath:indexPath];
     

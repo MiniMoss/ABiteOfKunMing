@@ -39,6 +39,11 @@
     [self.wbapi checkAuthValid:TCWBAuthCheckServer andDelegete:self];
 }
 
+-(void)logout
+{
+    [self.wbapi cancelAuth];
+}
+
 #pragma mark - WeiboAuthDelegate
 
 /**
@@ -62,5 +67,6 @@
     });
     
 }
+
 
 @end

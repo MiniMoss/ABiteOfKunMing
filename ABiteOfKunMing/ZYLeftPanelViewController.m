@@ -28,23 +28,11 @@
 - (IBAction)logout:(id)sender
 {
     [[self appDelegate].wbManager logout];
+    [[self appDelegate].checkAuth logout];
     [self performSegueWithIdentifier:@"showReloginView" sender:self];
     [self appDelegate].wbManager.isAccessTokenValid = NO;
     [[self appDelegate].wbManager checkAuthValid];
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//   if ([segue.identifier isEqualToString:@"showLoginView"]){
-//        ZYLoginViewController *loginViewController = (ZYLoginViewController *)segue.destinationViewController;
-//        loginViewController.delegate = self;
-//    }
-//}
-//
-//- (void)initData
-//{
-//    [self dismissViewControllerAnimated:NO
-//                             completion:nil];
-//}
 
 @end
