@@ -31,6 +31,14 @@ BMKMapManager *_mapManager;
     return _checkAuth;
 }
 
+- (ZYLoadDataFailedCheckAuth *) loadDataFailedCheckAuth
+{
+    if (!_loadDataFailedCheckAuth) {
+        _loadDataFailedCheckAuth = [[ZYLoadDataFailedCheckAuth alloc] init];
+    }
+    return _loadDataFailedCheckAuth;
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

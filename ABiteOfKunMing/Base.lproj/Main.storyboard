@@ -80,6 +80,41 @@
             </objects>
             <point key="canvasLocation" x="1801" y="-4031"/>
         </scene>
+        <!--Yload Data Failed View Controller-->
+        <scene sceneID="mIN-ne-KuX">
+            <objects>
+                <viewController id="dWQ-3z-Xxf" customClass="ZYloadDataFailedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vyr-VH-4qk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数据加载失败" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7a2-7b-eFK">
+                                <rect key="frame" x="109" y="244" width="102" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1qd-ih-w8D">
+                                <rect key="frame" x="145" y="273" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="刷新">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="refresh:" destination="dWQ-3z-Xxf" eventType="touchUpInside" id="mIN-co-GPi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="lable" destination="7a2-7b-eFK" id="soU-Gp-QcL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffc-Jw-djX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3363" y="-4813"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="pcF-6s-a4W">
             <objects>
@@ -128,7 +163,8 @@
                     <connections>
                         <outlet property="WBDataTableView" destination="FiZ-0u-LVK" id="leT-PL-Mcm"/>
                         <segue destination="cxc-X7-Ldp" kind="push" identifier="showCellDetail" id="Si7-wM-7W3"/>
-                        <segue destination="Tjy-Be-Lt8" kind="modal" identifier="showLoginView" id="7R7-Ez-v6L"/>
+                        <segue destination="Tjy-Be-Lt8" kind="modal" identifier="showLoginView" modalTransitionStyle="flipHorizontal" id="7R7-Ez-v6L"/>
+                        <segue destination="dWQ-3z-Xxf" kind="modal" identifier="loadDataFailed" id="fu8-2U-w7F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45y-LB-efh" userLabel="First Responder" sceneMemberID="firstResponder"/>
