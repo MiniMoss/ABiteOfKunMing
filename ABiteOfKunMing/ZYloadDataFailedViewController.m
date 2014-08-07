@@ -12,7 +12,7 @@
 
 #define BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=5&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
-@interface ZYloadDataFailedViewController ()<ZYLoadDataFailedCheckAuth>
+@interface ZYloadDataFailedViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *lable;
 
@@ -29,17 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
-
 
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self appDelegate].loadDataFailedCheckAuth.delegate = self;
-    //
-}
 
 - (IBAction)refresh:(id)sender {
     
@@ -65,8 +57,6 @@
     }];
 }
 
-- (void)isAuthValid
-{
-}
+
 
 @end

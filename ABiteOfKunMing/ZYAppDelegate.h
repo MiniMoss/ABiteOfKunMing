@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ZYWeiBoManager.h"
 #import "ZYCheckAuth.h"
-#import "ZYLoadDataFailedCheckAuth.h"
 #import "BMapKit.h"
 #import "JASidePanelController.h"
 
@@ -18,7 +17,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) ZYWeiBoManager *wbManager;
 @property (strong, nonatomic) ZYCheckAuth *checkAuth;
-@property (strong, nonatomic) ZYLoadDataFailedCheckAuth *loadDataFailedCheckAuth;
 @property (strong, nonatomic) JASidePanelController *viewController;
 
 @end

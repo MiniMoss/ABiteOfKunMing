@@ -18,7 +18,6 @@
 		DF44060A198F322B00016042 /* ZYImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF440609198F322B00016042 /* ZYImageCollectionViewCell.m */; };
 		DF545B9719931C8E00D68B63 /* ZYloadDataFailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF545B9619931C8E00D68B63 /* ZYloadDataFailedViewController.m */; };
 		DF5F3293198B43B500B64280 /* ZYreloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5F3292198B43B500B64280 /* ZYreloginViewController.m */; };
-		DF744EE719932A1A00EB88EA /* ZYLoadDataFailedCheckAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = DF744EE619932A1A00EB88EA /* ZYLoadDataFailedCheckAuth.m */; };
 		DF745B4D197960B80033D336 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4C197960B80033D336 /* Foundation.framework */; };
 		DF745B4F197960B80033D336 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4E197960B80033D336 /* CoreGraphics.framework */; };
 		DF745B51197960B80033D336 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B50197960B80033D336 /* UIKit.framework */; };
@@ -101,8 +100,6 @@
 		DF545B9619931C8E00D68B63 /* ZYloadDataFailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYloadDataFailedViewController.m; sourceTree = "<group>"; };
 		DF5F3291198B43B500B64280 /* ZYreloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYreloginViewController.h; path = ../ZYreloginViewController.h; sourceTree = "<group>"; };
 		DF5F3292198B43B500B64280 /* ZYreloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYreloginViewController.m; path = ../ZYreloginViewController.m; sourceTree = "<group>"; };
-		DF744EE519932A1A00EB88EA /* ZYLoadDataFailedCheckAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLoadDataFailedCheckAuth.h; sourceTree = "<group>"; };
-		DF744EE619932A1A00EB88EA /* ZYLoadDataFailedCheckAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLoadDataFailedCheckAuth.m; sourceTree = "<group>"; };
 		DF745B49197960B80033D336 /* ABiteOfKunMing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABiteOfKunMing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF745B4C197960B80033D336 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DF745B4E197960B80033D336 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -334,8 +331,6 @@
 				DF342705197BA73900E24C61 /* ZYWeiBoManager.m */,
 				DF40F4A9198E972D0051E177 /* ZYCheckAuth.h */,
 				DF40F4AA198E972D0051E177 /* ZYCheckAuth.m */,
-				DF744EE519932A1A00EB88EA /* ZYLoadDataFailedCheckAuth.h */,
-				DF744EE619932A1A00EB88EA /* ZYLoadDataFailedCheckAuth.m */,
 				DF745B64197960B80033D336 /* Images.xcassets */,
 				DF745B81197962200033D336 /* 3rd Party */,
 				DF745B52197960B80033D336 /* ABiteOfKunMing */,
@@ -696,7 +691,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF744EE719932A1A00EB88EA /* ZYLoadDataFailedCheckAuth.m in Sources */,
 				DF7B2773197C1A4B00BCCA0F /* ZYCellDetailViewController.m in Sources */,
 				DF745C2819796A4D0033D336 /* ZYBDMapViewController.mm in Sources */,
 				DF34270F197BC86A00E24C61 /* ZYSidePanelViewController.m in Sources */,

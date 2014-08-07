@@ -288,17 +288,6 @@
 //    return newimg;
 //}
 
-//检测网络连接
-/**
- AFNetworkReachabilityStatusUnknown          = -1,  // 未知
- AFNetworkReachabilityStatusNotReachable     = 0,   // 无连接
- AFNetworkReachabilityStatusReachableViaWWAN = 1,   // 3G 花钱
- AFNetworkReachabilityStatusReachableViaWiFi = 2,   // 局域网络,不花钱
- */
-- (void)reach
-{
-
-}
 
 #pragma mark - Table view data source
 

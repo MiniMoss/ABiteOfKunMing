@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ZYAppDelegate.h"
 #import "AFNetworking.h"
-#import "ZYLoadDataFailedCheckAuth.h"
 
 @interface ZYloadDataFailedViewController : UIViewController
 
