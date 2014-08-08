@@ -43,6 +43,9 @@ BMKMapManager *_mapManager;
         NSLog(@"manager start failed!");
     }
     
+    //设置statusbar字体为白色
+    [application setStatusBarHidden:NO];
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
     return YES;
 }
 							

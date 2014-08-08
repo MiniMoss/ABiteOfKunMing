@@ -28,7 +28,6 @@
 - (IBAction)logout:(id)sender
 {
     [[self appDelegate].wbManager logout];
-    [[self appDelegate].checkAuth logout];
     [self performSegueWithIdentifier:@"showReloginView" sender:self];
     [self appDelegate].wbManager.isAccessTokenValid = NO;
     [[self appDelegate].wbManager checkAuthValid];

@@ -140,52 +140,45 @@
 
     __weak ZYTableViewController *weakSelf = self;
     
-    if ((_networkStatus == 1) || (_networkStatus == 2)) {
-        NSString *urlStr;
-        if([self appDelegate].checkAuth.accessToken){
-            urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
-        }else if([self appDelegate].wbManager.accessToken) {
-            urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-        }
-        
-        NSLog(@"%@",urlStr);
-        
-        NSURL *URL = [NSURL URLWithString:urlStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-        operation.responseSerializer = [AFJSONResponseSerializer serializer];
-        operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id json) {
-            NSDictionary *dicJson=[[NSDictionary alloc]initWithDictionary:json];
-            NSDictionary *dicData = [dicJson objectForKey:@"data"];
-            NSString *checkData = [dicJson objectForKey:@"msg"];
-            if ([checkData isEqualToString:@"ok"]) {
-                NSArray *arrInfo = [dicData objectForKey:@"info"];
-                [_dataSource removeAllObjects];
-                for (int i = 0; i < [arrInfo count]; i++) {
-                    [_dataSource addObject:arrInfo[i]];
-                }
-                _dataSourceStatus = YES;
-                [self.WBDataTableView reloadData];
-            }else{
-                [_dataSource addObject:[dicJson objectForKey:@"msg"]];
-                _dataSourceStatus = NO;
-                [self.WBDataTableView reloadData];
-                [self performSegueWithIdentifier:@"loadDataFailed" sender:self];
-            }
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-            NSLog(@"%@", error);
-        }];
-        [operation start];
-        [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
-
-    }else if ((_networkStatus == -1) || (_networkStatus == 0) ){
-        _dataSourceStatus = NO;
-        _dataSource = [NSMutableArray arrayWithObject:@"error"];
-        [self performSegueWithIdentifier:@"loadDataFailed" sender:self];
+    NSString *urlStr;
+    if([self appDelegate].checkAuth.accessToken){
+        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].checkAuth.appKey, [self appDelegate].checkAuth.accessToken, [self appDelegate].checkAuth.openId];
+    }else if([self appDelegate].wbManager.accessToken) {
+        urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     }
     
+    NSLog(@"%@",urlStr);
+    
+    NSURL *URL = [NSURL URLWithString:urlStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id json) {
+        NSDictionary *dicJson=[[NSDictionary alloc]initWithDictionary:json];
+        NSDictionary *dicData = [dicJson objectForKey:@"data"];
+        NSString *checkData = [dicJson objectForKey:@"msg"];
+        if ([checkData isEqualToString:@"ok"]) {
+            NSArray *arrInfo = [dicData objectForKey:@"info"];
+            [_dataSource removeAllObjects];
+            for (int i = 0; i < [arrInfo count]; i++) {
+                [_dataSource addObject:arrInfo[i]];
+            }
+            _dataSourceStatus = YES;
+            [self.WBDataTableView reloadData];
+        }else{
+            [_dataSource addObject:[dicJson objectForKey:@"msg"]];
+            _dataSourceStatus = NO;
+            [self.WBDataTableView reloadData];
+            [self performSegueWithIdentifier:@"loadDataFailed" sender:self];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        NSLog(@"%@", error);
+    }];
+    [operation start];
+    [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
+
 }
 
 #pragma mark - Methods
@@ -232,7 +225,6 @@
     }];
     [operation start];
     [weakSelf.WBDataTableView.infiniteScrollingView stopAnimating];
-    
 }
 
 - (void)loadCellImage:(ZYCellOfCenterPanelTableView *)cell indexPath:(NSIndexPath *)indexPath
