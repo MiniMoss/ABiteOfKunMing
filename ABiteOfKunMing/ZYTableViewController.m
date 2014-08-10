@@ -45,6 +45,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     //检查网络状态
     // 如果要检测网络状态的变化,必须用检测管理器的单例的startMonitoring
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
@@ -52,21 +53,39 @@
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         _networkStatus = status;
         switch (status) {
-            case AFNetworkReachabilityStatusNotReachable:
+            case AFNetworkReachabilityStatusNotReachable:{
+                _WBDataTableView.showsPullToRefresh = NO;
+                _WBDataTableView.showsInfiniteScrolling = NO;
                 _dataSourceStatus = NO;
                 _dataSource = [NSMutableArray arrayWithObject:@"error"];
-                [self performSegueWithIdentifier:@"loadDataFailed" sender:self];
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@""
+                                                                   message:@"获取数据失败，请检查网络"
+                                                                  delegate:nil
+                                                         cancelButtonTitle:@"取消"
+                                                         otherButtonTitles:@"确定"
+                                          ,nil];
+                [alertView show];
+            }
                 break;
-            case  AFNetworkReachabilityStatusUnknown:
+            case  AFNetworkReachabilityStatusUnknown:{
+                _WBDataTableView.showsPullToRefresh = NO;
+                _WBDataTableView.showsInfiniteScrolling = NO;
                 _dataSourceStatus = NO;
                 _dataSource = [NSMutableArray arrayWithObject:@"error"];
-                [self performSegueWithIdentifier:@"loadDataFailed" sender:self];
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@""
+                                                                   message:@"获取数据失败，请检查网络"
+                                                                  delegate:nil
+                                                         cancelButtonTitle:@"取消"
+                                                         otherButtonTitles:@"确定"
+                                          ,nil];
+                [alertView show];
+            }
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                //[[AFNetworkReachabilityManager sharedManager] stopMonitoring];
+                [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                //[[AFNetworkReachabilityManager sharedManager] stopMonitoring];
+                [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
                 break;
             default:
                 break;
@@ -78,8 +97,6 @@
         [_WBDataTableView triggerPullToRefresh];
         _WBDataTableView.showsPullToRefresh = YES;
     }else if([self appDelegate].wbManager.reLoginFlag){   //reLoginView trigger
-//        [_WBDataTableView triggerPullToRefresh];
-//        _WBDataTableView.showsPullToRefresh = YES;
         [[self appDelegate].checkAuth checkAuthValid];
     }
     
@@ -123,9 +140,8 @@
     if (![self appDelegate].checkAuth.accessToken) {
         [self performSegueWithIdentifier:@"showLoginView" sender:self];
     }else if([self appDelegate].checkAuth.accessToken){
-        [_WBDataTableView triggerPullToRefresh];
         _WBDataTableView.showsPullToRefresh = YES;
-        [self insertRowAtTop];
+        [_WBDataTableView triggerPullToRefresh];
     }
 }
 
@@ -166,15 +182,28 @@
             }
             _dataSourceStatus = YES;
             [self.WBDataTableView reloadData];
-        }else{
+        }else{       //获取数据失败
+            _WBDataTableView.showsPullToRefresh = NO;
+            _WBDataTableView.showsInfiniteScrolling = NO;
             [_dataSource addObject:[dicJson objectForKey:@"msg"]];
             _dataSourceStatus = NO;
-            [self.WBDataTableView reloadData];
-            [self performSegueWithIdentifier:@"loadDataFailed" sender:self];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@""
+                                                               message:@"返回数据错误，请稍后再试"
+                                                              delegate:nil
+                                                     cancelButtonTitle:@"取消"
+                                                     otherButtonTitles:@"确定",nil];
+            [alertView show];
+            //[self.WBDataTableView reloadData];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         NSLog(@"%@", error);
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@""
+                                                           message:@"网络连接失败，请稍后再试"
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"取消"
+                                                 otherButtonTitles:@"确定",nil];
+        [alertView show];
     }];
     [operation start];
     [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
@@ -261,6 +290,32 @@
         ZYLoginViewController *loginViewController = (ZYLoginViewController *)segue.destinationViewController;
         loginViewController.delegate = self;
     }
+}
+
+- (IBAction)refresh:(id)sender
+{
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    // 检测网络连接的单例,网络变化时的回调方法
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusNotReachable:
+                break;
+            case  AFNetworkReachabilityStatusUnknown:
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                _WBDataTableView.showsPullToRefresh = YES;
+                _WBDataTableView.showsInfiniteScrolling = YES;
+                [[self appDelegate].checkAuth checkAuthValid];
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                _WBDataTableView.showsPullToRefresh = YES;
+                _WBDataTableView.showsInfiniteScrolling = YES;
+                [[self appDelegate].checkAuth checkAuthValid];
+                break;
+            default:
+                break;
+        }
+    }];
 }
 
 //- (UIImage*)circleImage:(UIImage*)image withParam:(CGFloat)inset {

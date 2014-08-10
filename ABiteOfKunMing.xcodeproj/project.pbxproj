@@ -16,7 +16,6 @@
 		DF40F4AB198E972D0051E177 /* ZYCheckAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = DF40F4AA198E972D0051E177 /* ZYCheckAuth.m */; };
 		DF440607198F293600016042 /* ZYImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF440606198F293600016042 /* ZYImageCollectionViewController.m */; };
 		DF44060A198F322B00016042 /* ZYImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF440609198F322B00016042 /* ZYImageCollectionViewCell.m */; };
-		DF545B9719931C8E00D68B63 /* ZYloadDataFailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF545B9619931C8E00D68B63 /* ZYloadDataFailedViewController.m */; };
 		DF5F3293198B43B500B64280 /* ZYreloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5F3292198B43B500B64280 /* ZYreloginViewController.m */; };
 		DF745B4D197960B80033D336 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4C197960B80033D336 /* Foundation.framework */; };
 		DF745B4F197960B80033D336 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF745B4E197960B80033D336 /* CoreGraphics.framework */; };
@@ -96,8 +95,6 @@
 		DF440606198F293600016042 /* ZYImageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageCollectionViewController.m; sourceTree = "<group>"; };
 		DF440608198F322B00016042 /* ZYImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageCollectionViewCell.h; sourceTree = "<group>"; };
 		DF440609198F322B00016042 /* ZYImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageCollectionViewCell.m; sourceTree = "<group>"; };
-		DF545B9519931C8E00D68B63 /* ZYloadDataFailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYloadDataFailedViewController.h; sourceTree = "<group>"; };
-		DF545B9619931C8E00D68B63 /* ZYloadDataFailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYloadDataFailedViewController.m; sourceTree = "<group>"; };
 		DF5F3291198B43B500B64280 /* ZYreloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYreloginViewController.h; path = ../ZYreloginViewController.h; sourceTree = "<group>"; };
 		DF5F3292198B43B500B64280 /* ZYreloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYreloginViewController.m; path = ../ZYreloginViewController.m; sourceTree = "<group>"; };
 		DF745B49197960B80033D336 /* ABiteOfKunMing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABiteOfKunMing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,8 +292,6 @@
 				DF342711197BC8E100E24C61 /* ZYTableViewController.m */,
 				DF40D25C197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.h */,
 				DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */,
-				DF545B9519931C8E00D68B63 /* ZYloadDataFailedViewController.h */,
-				DF545B9619931C8E00D68B63 /* ZYloadDataFailedViewController.m */,
 			);
 			name = TableView;
 			sourceTree = "<group>";
@@ -707,7 +702,6 @@
 				DF745C17197963D70033D336 /* UIWebView+AFNetworking.m in Sources */,
 				DF745C2F19796BDC0033D336 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				DF745C04197963D70033D336 /* AFURLResponseSerialization.m in Sources */,
-				DF545B9719931C8E00D68B63 /* ZYloadDataFailedViewController.m in Sources */,
 				DF745C12197963D70033D336 /* UIAlertView+AFNetworking.m in Sources */,
 				DF745C02197963D70033D336 /* AFURLConnectionOperation.m in Sources */,
 				DF342712197BC8E100E24C61 /* ZYTableViewController.m in Sources */,
