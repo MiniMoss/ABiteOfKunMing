@@ -13,7 +13,7 @@
 
 @interface ZYImageCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
+//@property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
 
 @end
 
@@ -23,8 +23,8 @@
 {
     [super viewDidLoad];
     
-    _imageCollectionView.delegate = self;
-    _imageCollectionView.dataSource = self;
+//    _imageCollectionView.delegate = self;
+//    _imageCollectionView.dataSource = self;
     
 }
 
