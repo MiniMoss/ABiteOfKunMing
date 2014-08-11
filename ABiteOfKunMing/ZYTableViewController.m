@@ -117,6 +117,8 @@
 {
     [super viewDidLoad];
     
+    _btnRefresh.enabled = NO;
+    
     [self appDelegate].checkAuth.delegate =self;
     [[self appDelegate].checkAuth checkAuthValid];
     
@@ -140,6 +142,7 @@
     }];
     
     _WBDataTableView.showsPullToRefresh = NO;
+    
     
 }
 
