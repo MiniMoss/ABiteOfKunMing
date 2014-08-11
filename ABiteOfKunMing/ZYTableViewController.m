@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSMutableArray *detailImageUrlArr;
 @property int networkStatus;
 @property BOOL dataSourceStatus;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnRefresh;
 @property (weak, nonatomic) IBOutlet UITableView *WBDataTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spin;
 
@@ -192,6 +193,7 @@
             _WBDataTableView.showsPullToRefresh = YES   ;
             _WBDataTableView.showsInfiniteScrolling = YES;
             [_spin stopAnimating];
+            _btnRefresh.enabled = YES;
         }else{       //获取数据失败
             _WBDataTableView.showsPullToRefresh = NO;
             _WBDataTableView.showsInfiniteScrolling = NO;
@@ -305,13 +307,16 @@
 
 - (IBAction)refresh:(id)sender
 {
+    _btnRefresh.enabled = NO;
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     // 检测网络连接的单例,网络变化时的回调方法
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
             case AFNetworkReachabilityStatusNotReachable:
+                _btnRefresh.enabled = YES;
                 break;
             case  AFNetworkReachabilityStatusUnknown:
+                _btnRefresh.enabled = YES;
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
                 [[self appDelegate].checkAuth checkAuthValid];
