@@ -10,4 +10,10 @@
 
 @interface ZYAddAndInfoTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSString *info;
+@property (strong, nonatomic) NSString *address;
+@property (weak, nonatomic) IBOutlet UILabel *lableInfo;
+@property (weak, nonatomic) IBOutlet UILabel *lableAddress;
+
+
 @end

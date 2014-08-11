@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSString *selectedLat;
 @property (strong, nonatomic) NSString *selectedLon;
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *place;
+@property (strong, nonatomic) NSString *address;
 @property (strong, nonatomic) NSMutableArray *detailImageUrlArr;
 @property int networkStatus;
 @property BOOL dataSourceStatus;
@@ -295,7 +295,7 @@
         cellDetailViewController.selectedLat = _selectedLat;
         cellDetailViewController.selectedLon = _selectedLon;
         cellDetailViewController.name = _name;
-        cellDetailViewController.place = _place;
+        cellDetailViewController.address = _address;
         cellDetailViewController.detailImageUrlArr = _detailImageUrlArr;
     }else if ([segue.identifier isEqualToString:@"showLoginView"]){
         ZYLoginViewController *loginViewController = (ZYLoginViewController *)segue.destinationViewController;
@@ -386,7 +386,7 @@
         _selectedLat = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"latitude"]];
         _selectedLon = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"longitude"]];
         _name = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"origtext"]];
-        _place = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
+        _address = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
         _detailImageUrlArr = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"image"];
         [self performSegueWithIdentifier:@"showCellDetail" sender:self];
     }

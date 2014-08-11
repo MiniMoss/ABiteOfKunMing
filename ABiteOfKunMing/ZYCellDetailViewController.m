@@ -10,13 +10,13 @@
 #import "ZYBDMapViewController.h"
 #import "ZYImageCollectionViewController.h"
 #import "ZYAppDelegate.h"
+#import "ZYAddAndInfoTableViewController.h"
 
 #define SHOWMAP_SEGUE_ID_KEY @"showMap"
 #define SHOWDETAILIMAGE_SEGUE_ID_KEY @"showDetailImage"
+#define SHOWADDINFO_SEGUE_ID_KEY @"addressAndInfo"
 
 @interface ZYCellDetailViewController ()
-
-@property (strong, nonatomic) IBOutlet UILabel *lablePlace;
 
 @end
 
@@ -32,7 +32,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = _name;
-    self.lablePlace.text = _place;
     [self appDelegate].wbManager.loginFlag = NO;
     [self appDelegate].wbManager.reLoginFlag = NO;
 }
@@ -50,6 +49,9 @@
     }else if ([segue.identifier isEqualToString:SHOWDETAILIMAGE_SEGUE_ID_KEY]){
         ZYImageCollectionViewController *DetailImageViewController = segue.destinationViewController;
         DetailImageViewController.detailImageUrlArr = _detailImageUrlArr;
+    }else if ([segue.identifier isEqualToString:SHOWADDINFO_SEGUE_ID_KEY]){
+        ZYAddAndInfoTableViewController *addAndInfoController = (ZYAddAndInfoTableViewController *)segue.destinationViewController;
+        addAndInfoController.address = _address;
     }
 }
 
