@@ -150,9 +150,9 @@
 
 - (void)isAuthValid
 {
-    if (![self appDelegate].checkAuth.accessToken) {
+    if (![self appDelegate].checkAuth.accessToken && ![self appDelegate].wbManager.accessToken) {
         [self performSegueWithIdentifier:@"showLoginView" sender:self];
-    }else if([self appDelegate].checkAuth.accessToken){
+    }else if([self appDelegate].checkAuth.accessToken || [self appDelegate].wbManager.accessToken){
         [_WBDataTableView triggerPullToRefresh];
     }
 }
