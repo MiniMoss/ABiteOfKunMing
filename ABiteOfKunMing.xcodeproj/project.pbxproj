@@ -64,6 +64,7 @@
 		DF745C2F19796BDC0033D336 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = DF745C2C19796BDB0033D336 /* UIScrollView+SVInfiniteScrolling.m */; };
 		DF745C3019796BDC0033D336 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = DF745C2E19796BDB0033D336 /* UIScrollView+SVPullToRefresh.m */; };
 		DF7B2773197C1A4B00BCCA0F /* ZYCellDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7B2772197C1A4B00BCCA0F /* ZYCellDetailViewController.m */; };
+		DF9BF0481997C4EE001C86B5 /* ZYAddAndInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9BF0471997C4EE001C86B5 /* ZYAddAndInfoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +236,8 @@
 		DF745C2E19796BDB0033D336 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		DF7B2771197C1A4B00BCCA0F /* ZYCellDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCellDetailViewController.h; sourceTree = "<group>"; };
 		DF7B2772197C1A4B00BCCA0F /* ZYCellDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCellDetailViewController.m; sourceTree = "<group>"; };
+		DF9BF0461997C4EE001C86B5 /* ZYAddAndInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYAddAndInfoTableViewController.h; sourceTree = "<group>"; };
+		DF9BF0471997C4EE001C86B5 /* ZYAddAndInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYAddAndInfoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,9 +584,19 @@
 				DF7B2771197C1A4B00BCCA0F /* ZYCellDetailViewController.h */,
 				DF7B2772197C1A4B00BCCA0F /* ZYCellDetailViewController.m */,
 				DF4405FE198F17F300016042 /* Image CollectionView */,
+				DF9BF0451997A1A9001C86B5 /* Address&Intro */,
 				DF34270C197BC7CB00E24C61 /* BaiDuMap */,
 			);
 			name = "Detail View";
+			sourceTree = "<group>";
+		};
+		DF9BF0451997A1A9001C86B5 /* Address&Intro */ = {
+			isa = PBXGroup;
+			children = (
+				DF9BF0461997C4EE001C86B5 /* ZYAddAndInfoTableViewController.h */,
+				DF9BF0471997C4EE001C86B5 /* ZYAddAndInfoTableViewController.m */,
+			);
+			name = "Address&Intro";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -712,6 +725,7 @@
 				DF440607198F293600016042 /* ZYImageCollectionViewController.m in Sources */,
 				DF5F3293198B43B500B64280 /* ZYreloginViewController.m in Sources */,
 				DF745BFF197963D70033D336 /* AFHTTPSessionManager.m in Sources */,
+				DF9BF0481997C4EE001C86B5 /* ZYAddAndInfoTableViewController.m in Sources */,
 				DF745C15197963D70033D336 /* UIProgressView+AFNetworking.m in Sources */,
 				DF745C03197963D70033D336 /* AFURLRequestSerialization.m in Sources */,
 				DF44060A198F322B00016042 /* ZYImageCollectionViewCell.m in Sources */,

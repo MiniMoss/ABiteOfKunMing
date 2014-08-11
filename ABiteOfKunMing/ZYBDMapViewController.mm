@@ -82,7 +82,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"百度地图客户端导航",@"百度地图网页导航",@"Apple地图导航",nil];
+                                                    otherButtonTitles:@"百度地图客户端导航",@"百度地图网页导航",nil];
     [actionSheet showInView:self.view];
 }
 

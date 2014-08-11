@@ -11,9 +11,9 @@
 #import "ZYLoginViewController.h"
 #import "ZYCheckAuth.h"
 
-#define BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=5&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
+#define BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=7&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
-#define TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=5&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
+#define TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=7&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
 //test URL 改name
 #define TEST_BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=10&lastid=0&name=hua19761110&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
@@ -32,6 +32,8 @@
 @property int networkStatus;
 @property BOOL dataSourceStatus;
 @property (weak, nonatomic) IBOutlet UITableView *WBDataTableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spin;
+
 
 
 @end
@@ -46,6 +48,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    //防止加载网络慢导致刷新崩溃
+    if (_dataSourceStatus == NO) {
+        [_dataSource addObject:@""];
+        _dataSourceStatus = NO;
+        [self.WBDataTableView reloadData];
+    }
+
     //检查网络状态
     // 如果要检测网络状态的变化,必须用检测管理器的单例的startMonitoring
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
@@ -95,7 +105,6 @@
     if([self appDelegate].wbManager.loginFlag){    //loginView trigger
         [self dismissViewControllerAnimated:YES completion:nil];
         [_WBDataTableView triggerPullToRefresh];
-        _WBDataTableView.showsPullToRefresh = YES;
     }else if([self appDelegate].wbManager.reLoginFlag){   //reLoginView trigger
         [[self appDelegate].checkAuth checkAuthValid];
     }
@@ -140,7 +149,6 @@
     if (![self appDelegate].checkAuth.accessToken) {
         [self performSegueWithIdentifier:@"showLoginView" sender:self];
     }else if([self appDelegate].checkAuth.accessToken){
-        _WBDataTableView.showsPullToRefresh = YES;
         [_WBDataTableView triggerPullToRefresh];
     }
 }
@@ -149,11 +157,10 @@
 
 - (void)insertRowAtTop
 {
+    [_spin startAnimating];
     //test URL
     //NSString *urlStr = [NSString stringWithFormat:TEST_BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
-
-    //[self reach];
-
+    
     __weak ZYTableViewController *weakSelf = self;
     
     NSString *urlStr;
@@ -182,6 +189,9 @@
             }
             _dataSourceStatus = YES;
             [self.WBDataTableView reloadData];
+            _WBDataTableView.showsPullToRefresh = YES   ;
+            _WBDataTableView.showsInfiniteScrolling = YES;
+            [_spin stopAnimating];
         }else{       //获取数据失败
             _WBDataTableView.showsPullToRefresh = NO;
             _WBDataTableView.showsInfiniteScrolling = NO;
@@ -207,6 +217,7 @@
     }];
     [operation start];
     [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
+
 
 }
 
@@ -303,13 +314,9 @@
             case  AFNetworkReachabilityStatusUnknown:
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                _WBDataTableView.showsPullToRefresh = YES;
-                _WBDataTableView.showsInfiniteScrolling = YES;
                 [[self appDelegate].checkAuth checkAuthValid];
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                _WBDataTableView.showsPullToRefresh = YES;
-                _WBDataTableView.showsInfiniteScrolling = YES;
                 [[self appDelegate].checkAuth checkAuthValid];
                 break;
             default:

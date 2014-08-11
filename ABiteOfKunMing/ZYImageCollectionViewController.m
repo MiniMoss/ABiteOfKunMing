@@ -28,8 +28,6 @@
     
 }
 
-
-
 #pragma mark - Methods
 
 - (void)loadCellImage:(ZYImageCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath
