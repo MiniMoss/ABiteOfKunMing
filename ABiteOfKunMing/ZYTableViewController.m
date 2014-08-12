@@ -11,6 +11,9 @@
 #import "ZYLoginViewController.h"
 #import "ZYCheckAuth.h"
 
+#define SHOW_LOGIN_SEGUE_KEY @"showLoginView"
+#define SHOW_CELLDETAIL_SEGUE_KEY @"showCellDetail"
+
 #define BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=7&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
 #define TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=7&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
@@ -19,6 +22,7 @@
 #define TEST_BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=10&lastid=0&name=hua19761110&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
 #define TEST_TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=10&lastid=0&name=hua19761110&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
+
 
 
 @interface ZYTableViewController ()<UITableViewDelegate, UITableViewDataSource,ZYCheckAuthDelegate,ZYLoginViewControllerDelegate>
@@ -151,7 +155,7 @@
 - (void)isAuthValid
 {
     if (![self appDelegate].checkAuth.accessToken && ![self appDelegate].wbManager.accessToken) {
-        [self performSegueWithIdentifier:@"showLoginView" sender:self];
+        [self performSegueWithIdentifier:SHOW_LOGIN_SEGUE_KEY sender:self];
     }else if([self appDelegate].checkAuth.accessToken || [self appDelegate].wbManager.accessToken){
         [_WBDataTableView triggerPullToRefresh];
     }
@@ -295,14 +299,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"showCellDetail"]) {
+    if ([segue.identifier isEqualToString:SHOW_CELLDETAIL_SEGUE_KEY]) {
         ZYCellDetailViewController *cellDetailViewController = segue.destinationViewController;
         cellDetailViewController.selectedLat = _selectedLat;
         cellDetailViewController.selectedLon = _selectedLon;
         cellDetailViewController.name = _name;
         cellDetailViewController.address = _address;
         cellDetailViewController.detailImageUrlArr = _detailImageUrlArr;
-    }else if ([segue.identifier isEqualToString:@"showLoginView"]){
+    }else if ([segue.identifier isEqualToString:SHOW_LOGIN_SEGUE_KEY]){
         ZYLoginViewController *loginViewController = (ZYLoginViewController *)segue.destinationViewController;
         loginViewController.delegate = self;
     }

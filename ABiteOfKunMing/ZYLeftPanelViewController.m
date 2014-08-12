@@ -10,6 +10,8 @@
 #import "ZYAppDelegate.h"
 #import "ZYLoginViewController.h"
 
+#define SHOW_LOGIN_SEGUE_KEY @"showReloginView"
+
 @interface ZYLeftPanelViewController ()
 @end
 
@@ -28,7 +30,7 @@
 - (IBAction)logout:(id)sender
 {
     [[self appDelegate].wbManager logout];
-    [self performSegueWithIdentifier:@"showReloginView" sender:self];
+    [self performSegueWithIdentifier:SHOW_LOGIN_SEGUE_KEY sender:self];
     [self appDelegate].wbManager.isAccessTokenValid = NO;
     [[self appDelegate].wbManager checkAuthValid];
 }
