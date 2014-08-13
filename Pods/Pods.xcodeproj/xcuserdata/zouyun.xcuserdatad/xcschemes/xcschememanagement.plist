@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-JASidePanels.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SVPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>90744807C0EF49E6BDD2685F</key>
+		<key>213187EA24834FD2B295CE85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CEE42D3990C44F58A394FC1F</key>
+		<key>57EB40F322F148C185D764BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7F7728EC8425473D8B0E0C07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9554663FB75A45CAB249DE5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

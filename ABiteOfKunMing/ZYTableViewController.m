@@ -199,6 +199,7 @@
             [self.WBDataTableView reloadData];
             _WBDataTableView.showsPullToRefresh = YES   ;
             _WBDataTableView.showsInfiniteScrolling = YES;
+            [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
             [_spin stopAnimating];
             _btnRefresh.enabled = YES;
         }else{       //获取数据失败
@@ -226,8 +227,6 @@
     }];
     [operation start];
     [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
-
-
 }
 
 #pragma mark - Methods
