@@ -178,7 +178,7 @@
         urlStr = [NSString stringWithFormat:BASE_URL_KEY,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     }
     
-    NSLog(@"%@",urlStr);
+    //NSLog(@"%@",urlStr);
     
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -213,7 +213,6 @@
                                                      cancelButtonTitle:@"取消"
                                                      otherButtonTitles:@"确定",nil];
             [alertView show];
-            //[self.WBDataTableView reloadData];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -247,8 +246,8 @@
         urlStr = [NSString stringWithFormat:TIMESTAMP_URL_KEY,timeStamp,[self appDelegate].wbManager.appKey, [self appDelegate].wbManager.accessToken, [self appDelegate].wbManager.openId];
     }
     
-    
     //NSLog(@"%@",urlStr);
+    
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -336,22 +335,6 @@
     }];
 }
 
-//- (UIImage*)circleImage:(UIImage*)image withParam:(CGFloat)inset {
-//    UIGraphicsBeginImageContext(image.size);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextSetLineWidth(context, 2);
-//    CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
-//    CGRect rect = CGRectMake(inset, inset, image.size.width - inset * 2.0f, image.size.height - inset * 2.0f);
-//    CGContextAddEllipseInRect(context, rect);
-//    CGContextClip(context);
-//
-//    [image drawInRect:rect];
-//    CGContextAddEllipseInRect(context, rect);
-//    CGContextStrokePath(context);
-//    UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return newimg;
-//}
 
 
 #pragma mark - Table view data source
