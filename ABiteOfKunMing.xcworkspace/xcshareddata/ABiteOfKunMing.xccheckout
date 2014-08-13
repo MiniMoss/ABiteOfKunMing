@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>BD053CBA-709B-4B21-B581-D0B6E0C3DD85</string>
+	<string>623A83F9-9BF2-4A90-96BA-8FC19D3481B8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ABiteOfKunMing</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/zCloud1984/ABiteOfKunMing.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ABiteOfKunMing.xcodeproj/project.xcworkspace</string>
+	<string>ABiteOfKunMing.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>29B5DDAA-5B09-4871-8883-4F39FC8EE386</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/zCloud1984/ABiteOfKunMing.git</string>
