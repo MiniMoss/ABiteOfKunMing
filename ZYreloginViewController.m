@@ -10,7 +10,9 @@
 
 #define SHOWTABLEVIEW_SEGUE_ID_KEY @"showTableView"
 
-@interface ZYreloginViewController ()<ZYWeiBoManagerDelegate>
+@interface ZYreloginViewController ()
+
+<ZYWeiBoManagerDelegate>
 
 
 @end
