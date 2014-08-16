@@ -196,12 +196,12 @@
                 [_dataSource addObject:arrInfo[i]];
             }
             _dataSourceStatus = YES;
-            [self.WBDataTableView reloadData];
             _WBDataTableView.showsPullToRefresh = YES   ;
             _WBDataTableView.showsInfiniteScrolling = YES;
             [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
             [_spin stopAnimating];
             _btnRefresh.enabled = YES;
+            [self.WBDataTableView reloadData];
         }else{       //获取数据失败
             _WBDataTableView.showsPullToRefresh = NO;
             _WBDataTableView.showsInfiniteScrolling = NO;

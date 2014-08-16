@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tyk-dR-mcf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -178,7 +177,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pc8-uW-frh">
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pc8-uW-frh">
                                 <rect key="frame" x="6" y="298" width="310" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -186,7 +185,7 @@
                                     <segue destination="w8u-Dx-ZOR" kind="embed" identifier="showMap" id="MMc-9H-tJl"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v70-9b-Oqf">
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v70-9b-Oqf">
                                 <rect key="frame" x="6" y="7" width="310" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -194,8 +193,8 @@
                                     <segue destination="gPw-ab-lT7" kind="embed" identifier="showDetailImage" id="LLP-p4-ioK"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcb-T1-MUt">
-                                <rect key="frame" x="5" y="135" width="310" height="150"/>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcb-T1-MUt">
+                                <rect key="frame" x="6" y="135" width="310" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -204,20 +203,6 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="v70-9b-Oqf" firstAttribute="leading" secondItem="qcb-T1-MUt" secondAttribute="leading" id="03k-uD-Ln0"/>
-                            <constraint firstItem="pc8-uW-frh" firstAttribute="top" secondItem="qcb-T1-MUt" secondAttribute="bottom" constant="7" id="22U-Bq-WNv"/>
-                            <constraint firstItem="tJQ-tg-nEc" firstAttribute="top" secondItem="pc8-uW-frh" secondAttribute="bottom" constant="5" id="D1h-Yt-8X6"/>
-                            <constraint firstItem="v70-9b-Oqf" firstAttribute="top" secondItem="GB3-mD-WZC" secondAttribute="bottom" constant="5" id="E2i-Pc-PS4"/>
-                            <constraint firstItem="v70-9b-Oqf" firstAttribute="trailing" secondItem="qcb-T1-MUt" secondAttribute="trailing" id="UU2-Zy-B2c"/>
-                            <constraint firstItem="v70-9b-Oqf" firstAttribute="centerX" secondItem="IP6-1o-Yq4" secondAttribute="centerX" id="UVw-rC-ePg"/>
-                            <constraint firstItem="qcb-T1-MUt" firstAttribute="top" secondItem="v70-9b-Oqf" secondAttribute="bottom" constant="15" id="fAc-pi-sgl"/>
-                            <constraint firstAttribute="bottom" secondItem="v70-9b-Oqf" secondAttribute="bottom" constant="379" id="m4M-ld-wIu"/>
-                            <constraint firstItem="pc8-uW-frh" firstAttribute="top" secondItem="IP6-1o-Yq4" secondAttribute="top" constant="297" id="qAc-SR-fTl"/>
-                            <constraint firstAttribute="trailing" secondItem="pc8-uW-frh" secondAttribute="trailing" constant="4" id="qkD-iE-qh2"/>
-                            <constraint firstItem="pc8-uW-frh" firstAttribute="leading" secondItem="IP6-1o-Yq4" secondAttribute="leading" constant="6" id="sbY-ra-bUr"/>
-                            <constraint firstItem="v70-9b-Oqf" firstAttribute="width" secondItem="pc8-uW-frh" secondAttribute="height" multiplier="31:20" id="w8q-sc-3O8"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PJn-5Q-6ap"/>
                 </viewController>
