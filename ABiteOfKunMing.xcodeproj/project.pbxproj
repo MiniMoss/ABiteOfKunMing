@@ -13,6 +13,7 @@
 		DF34270F197BC86A00E24C61 /* ZYSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF34270E197BC86A00E24C61 /* ZYSidePanelViewController.m */; };
 		DF342712197BC8E100E24C61 /* ZYTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342711197BC8E100E24C61 /* ZYTableViewController.m */; };
 		DF342715197BC90B00E24C61 /* ZYLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */; };
+		DF3D26EF199FB43800A02565 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3D26EE199FB43800A02565 /* MapKit.framework */; };
 		DF40D25E197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */; };
 		DF40F4AB198E972D0051E177 /* ZYCheckAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = DF40F4AA198E972D0051E177 /* ZYCheckAuth.m */; };
 		DF440607198F293600016042 /* ZYImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF440606198F293600016042 /* ZYImageCollectionViewController.m */; };
@@ -69,6 +70,7 @@
 		DF342711197BC8E100E24C61 /* ZYTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYTableViewController.m; sourceTree = "<group>"; };
 		DF342713197BC90B00E24C61 /* ZYLeftPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLeftPanelViewController.h; sourceTree = "<group>"; };
 		DF342714197BC90B00E24C61 /* ZYLeftPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLeftPanelViewController.m; sourceTree = "<group>"; };
+		DF3D26EE199FB43800A02565 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DF40D25C197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCellOfCenterPanelTableView.h; sourceTree = "<group>"; };
 		DF40D25D197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCellOfCenterPanelTableView.m; sourceTree = "<group>"; };
 		DF40F4A9198E972D0051E177 /* ZYCheckAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCheckAuth.h; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3D26EF199FB43800A02565 /* MapKit.framework in Frameworks */,
 				DF745C06197963D70033D336 /* libbaidumapapi.a in Frameworks */,
 				DF745C0D197963D70033D336 /* libTCWeiboSDK.a in Frameworks */,
 				DF745C251979646F0033D336 /* QuartzCore.framework in Frameworks */,
@@ -289,6 +292,7 @@
 		DF745B4B197960B80033D336 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DF3D26EE199FB43800A02565 /* MapKit.framework */,
 				DF745C241979646F0033D336 /* QuartzCore.framework */,
 				DF745C221979645C0033D336 /* Security.framework */,
 				DF745C20197964500033D336 /* Accounts.framework */,

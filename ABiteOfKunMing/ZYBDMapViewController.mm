@@ -9,8 +9,11 @@
 #import "ZYBDMapViewController.h"
 #import "BMapKit.h"
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
 #define APLLEMAP_URL_KEY @"http://maps.apple.com/maps?saddr=%f,%f&daddr=%f,%f"
+#define GOOGLEMAP_URL_KEY @"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f"
+
 
 @interface ZYBDMapViewController ()<BMKMapViewDelegate,CLLocationManagerDelegate,BMKLocationServiceDelegate,UIActionSheetDelegate>
 {
@@ -82,7 +85,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"百度地图客户端导航",@"百度地图网页导航",nil];
+                                                    otherButtonTitles:@"百度地图客户端导航",@"百度地图网页导航",@"苹果地图导航",nil];
     [actionSheet showInView:self.view];
 }
 
@@ -149,19 +152,20 @@
     [BMKNavigation openBaiduMapNavigation:para];
 }
 
-//- (void)appleNav
-//{
-//    CLLocationCoordinate2D startCoor;
-//    startCoor.latitude = _startCoor.latitude;
-//    startCoor.longitude = _startCoor.longitude;
-//    
-//    CLLocationCoordinate2D endCoor;
-//    endCoor.latitude = _endCoor.latitude;
-//    endCoor.longitude = _endCoor.longitude;
-//    
-//    NSString *string = [NSString stringWithFormat:APLLEMAP_URL_KEY,startCoor.latitude,startCoor.longitude,endCoor.latitude,endCoor.longitude];
-//    [[UIApplication sharedApplication]  openURL:[NSURL URLWithString:string]];
-//}
+- (void)appleNav
+{
+    CLLocationCoordinate2D endCoor;
+    endCoor.latitude = _endCoor.latitude;
+    endCoor.longitude = _endCoor.longitude;
+
+    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:endCoor addressDictionary:nil];
+    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:placemark];
+    toLocation.name = _name;
+    
+    [MKMapItem openMapsWithItems:@[currentLocation, toLocation]
+                   launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
+}
 
 #pragma mark - ActionSheet delegate
 
@@ -174,9 +178,9 @@
         case 1:
             [self webNavi];
             break;
-//        case 2:
-//            [self appleNav];
-//            break;
+        case 2:
+            [self appleNav];
+            break;
         default:
             break;
     }
