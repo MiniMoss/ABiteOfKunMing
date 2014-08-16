@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ABiteOfKunMing/ZYTableViewController.m"
-            timestampString = "429464778.200911"
+            timestampString = "429868337.398772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-insertRowAtTop"
             landmarkType = "5">
          </BreakpointContent>
@@ -214,15 +214,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ABiteOfKunMing/ZYTableViewController.m"
-            timestampString = "429623380.009996"
+            timestampString = "429868337.398772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-refresh:"
             landmarkType = "5">
          </BreakpointContent>

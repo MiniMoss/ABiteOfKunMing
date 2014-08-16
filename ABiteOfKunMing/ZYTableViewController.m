@@ -80,6 +80,7 @@
                                                          otherButtonTitles:@"确定"
                                           ,nil];
                 [alertView show];
+                _btnRefresh.enabled =YES;
             }
                 break;
             case  AFNetworkReachabilityStatusUnknown:{
@@ -94,6 +95,7 @@
                                                          otherButtonTitles:@"确定"
                                           ,nil];
                 [alertView show];
+                _btnRefresh.enabled =YES;
             }
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
@@ -109,7 +111,8 @@
     
     if([self appDelegate].wbManager.loginFlag){    //loginView trigger
         [self dismissViewControllerAnimated:YES completion:nil];
-        [_WBDataTableView triggerPullToRefresh];
+        //[_WBDataTableView triggerPullToRefresh];
+        [self insertRowAtTop];
     }else if([self appDelegate].wbManager.reLoginFlag){   //reLoginView trigger
         [[self appDelegate].checkAuth checkAuthValid];
     }
@@ -157,7 +160,8 @@
     if (![self appDelegate].checkAuth.accessToken && ![self appDelegate].wbManager.accessToken) {
         [self performSegueWithIdentifier:SHOW_LOGIN_SEGUE_KEY sender:self];
     }else if([self appDelegate].checkAuth.accessToken || [self appDelegate].wbManager.accessToken){
-        [_WBDataTableView triggerPullToRefresh];
+        //[_WBDataTableView triggerPullToRefresh];
+        [self insertRowAtTop];
     }
 }
 
@@ -196,7 +200,7 @@
                 [_dataSource addObject:arrInfo[i]];
             }
             _dataSourceStatus = YES;
-            _WBDataTableView.showsPullToRefresh = YES   ;
+            _WBDataTableView.showsPullToRefresh = YES;
             _WBDataTableView.showsInfiniteScrolling = YES;
             [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
             [_spin stopAnimating];
@@ -213,6 +217,7 @@
                                                      cancelButtonTitle:@"取消"
                                                      otherButtonTitles:@"确定",nil];
             [alertView show];
+            _btnRefresh.enabled =YES;
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -223,9 +228,11 @@
                                                  cancelButtonTitle:@"取消"
                                                  otherButtonTitles:@"确定",nil];
         [alertView show];
+        [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
+        _btnRefresh.enabled =YES;
     }];
     [operation start];
-    [weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
+    //[weakSelf.WBDataTableView.pullToRefreshView stopAnimating];
 }
 
 #pragma mark - Methods
