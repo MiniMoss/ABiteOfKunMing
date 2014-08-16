@@ -124,13 +124,13 @@
 {
     [super viewDidLoad];
     
+    //launchImage加载时间
+    [NSThread sleepForTimeInterval:3.0];
+    
     _btnRefresh.enabled = NO;
     
     [self appDelegate].checkAuth.delegate =self;
     [[self appDelegate].checkAuth checkAuthValid];
-    
-    //launchImage加载时间
-    //[NSThread sleepForTimeInterval:1.0];
     
     _dataSource = [[NSMutableArray alloc] init];
     
