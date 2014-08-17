@@ -155,9 +155,9 @@
 - (void)appleNav
 {
     CLLocationCoordinate2D endCoor;
-    endCoor.latitude = _endCoor.latitude;
-    endCoor.longitude = _endCoor.longitude;
-
+    endCoor.latitude = [_pinLat doubleValue];
+    endCoor.longitude = [_pinLon doubleValue];
+    
     MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:endCoor addressDictionary:nil];
     MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:placemark];
