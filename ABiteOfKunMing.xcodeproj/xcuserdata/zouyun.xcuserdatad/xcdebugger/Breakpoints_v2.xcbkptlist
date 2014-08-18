@@ -209,6 +209,36 @@
             endingLineNumber = "326"
             landmarkName = "-refresh:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZYTableViewController refresh:]"
+                  moduleName = "ABiteOfKunMing"
+                  urlString = "file:///Users/zouyun/Documents/AppDev/ABiteOfKunMing/ABiteOfKunMing/ZYTableViewController.m"
+                  timestampString = "430070893.431633"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "326"
+                  endingLineNumber = "326"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33-[ZYTableViewController refresh:]_block_invoke"
+                  moduleName = "ABiteOfKunMing"
+                  urlString = "file:///Users/zouyun/Documents/AppDev/ABiteOfKunMing/ABiteOfKunMing/ZYTableViewController.m"
+                  timestampString = "430070893.43206"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "326"
+                  endingLineNumber = "326"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

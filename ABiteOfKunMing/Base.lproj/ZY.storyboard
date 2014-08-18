@@ -154,8 +154,8 @@
                         <outlet property="WBDataTableView" destination="FiZ-0u-LVK" id="leT-PL-Mcm"/>
                         <outlet property="btnRefresh" destination="dCA-HS-w4j" id="jS8-LF-xTc"/>
                         <outlet property="spin" destination="1SG-iM-jQO" id="yHS-Fg-a1m"/>
-                        <segue destination="cxc-X7-Ldp" kind="push" identifier="showCellDetail" id="Si7-wM-7W3"/>
                         <segue destination="Tjy-Be-Lt8" kind="modal" identifier="showLoginView" modalTransitionStyle="flipHorizontal" id="7R7-Ez-v6L"/>
+                        <segue destination="cxc-X7-Ldp" kind="push" identifier="showCellDetail" id="MUU-jJ-4h0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45y-LB-efh" userLabel="First Responder" sceneMemberID="firstResponder"/>

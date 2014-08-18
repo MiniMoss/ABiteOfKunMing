@@ -27,6 +27,11 @@
     return (ZYAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

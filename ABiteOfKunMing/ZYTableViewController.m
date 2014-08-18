@@ -383,7 +383,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _baiDuZhiDaoUrl = @"nil";
+    _baiDuZhiDaoUrl = @"error";
     if (_dataSourceStatus) {
         NSLog(@"%d",indexPath.row);
         _selectedLat = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"latitude"]];
@@ -398,7 +398,7 @@
         
         _address = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
         _detailImageUrlArr = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"image"];
-        [self performSegueWithIdentifier:@"showCellDetail" sender:self];
+        [self performSegueWithIdentifier:SHOW_CELLDETAIL_SEGUE_KEY sender:self];
     }
 }
 
