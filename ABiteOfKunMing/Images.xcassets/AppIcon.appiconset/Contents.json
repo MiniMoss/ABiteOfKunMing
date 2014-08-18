@@ -13,7 +13,11 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "@2x.png",
+=======
+      "filename" : "slice.png",
+>>>>>>> develop
       "scale" : "2x"
     }
   ],

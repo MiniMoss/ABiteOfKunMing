@@ -755,7 +755,7 @@
 					"$(PROJECT_DIR)/BaiduMap_IOSSDK_v2.3.0_Lib",
 					"$(PROJECT_DIR)/TCWeiboSDK",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ABiteOfKunMing;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -775,7 +775,7 @@
 					"$(PROJECT_DIR)/BaiduMap_IOSSDK_v2.3.0_Lib",
 					"$(PROJECT_DIR)/TCWeiboSDK",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ABiteOfKunMing;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
