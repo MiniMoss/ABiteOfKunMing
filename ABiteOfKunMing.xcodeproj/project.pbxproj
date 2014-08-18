@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9EB1FEB9580F4AA2BFB948A0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B945B8D07604473BFA23E1C /* libPods.a */; };
+		DF0D728619A23A0A00B62E6F /* ZYCheckBaiDuZhiDaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0D728519A23A0A00B62E6F /* ZYCheckBaiDuZhiDaoViewController.m */; };
 		DF342706197BA73900E24C61 /* ZYWeiBoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342705197BA73900E24C61 /* ZYWeiBoManager.m */; };
 		DF34270A197BB61800E24C61 /* ZYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF342709197BB61800E24C61 /* ZYLoginViewController.m */; };
 		DF34270F197BC86A00E24C61 /* ZYSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF34270E197BC86A00E24C61 /* ZYSidePanelViewController.m */; };
@@ -60,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		9B945B8D07604473BFA23E1C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF0D728419A23A0A00B62E6F /* ZYCheckBaiDuZhiDaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCheckBaiDuZhiDaoViewController.h; sourceTree = "<group>"; };
+		DF0D728519A23A0A00B62E6F /* ZYCheckBaiDuZhiDaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCheckBaiDuZhiDaoViewController.m; sourceTree = "<group>"; };
 		DF342704197BA73900E24C61 /* ZYWeiBoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWeiBoManager.h; sourceTree = "<group>"; };
 		DF342705197BA73900E24C61 /* ZYWeiBoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWeiBoManager.m; sourceTree = "<group>"; };
 		DF342708197BB61800E24C61 /* ZYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLoginViewController.h; sourceTree = "<group>"; };
@@ -214,6 +217,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF0D728319A239D200B62E6F /* checkBaiDuZhiDao */ = {
+			isa = PBXGroup;
+			children = (
+				DF0D728419A23A0A00B62E6F /* ZYCheckBaiDuZhiDaoViewController.h */,
+				DF0D728519A23A0A00B62E6F /* ZYCheckBaiDuZhiDaoViewController.m */,
+			);
+			name = checkBaiDuZhiDao;
+			sourceTree = "<group>";
+		};
 		DF342707197BB5EA00E24C61 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +464,7 @@
 				DF7B2772197C1A4B00BCCA0F /* ZYCellDetailViewController.m */,
 				DF4405FE198F17F300016042 /* Image CollectionView */,
 				DF9BF0451997A1A9001C86B5 /* Address&Intro */,
+				DF0D728319A239D200B62E6F /* checkBaiDuZhiDao */,
 				DF34270C197BC7CB00E24C61 /* BaiDuMap */,
 			);
 			name = "Detail View";
@@ -606,6 +619,7 @@
 				DF34270F197BC86A00E24C61 /* ZYSidePanelViewController.m in Sources */,
 				DF34270A197BB61800E24C61 /* ZYLoginViewController.m in Sources */,
 				DF745B59197960B80033D336 /* main.m in Sources */,
+				DF0D728619A23A0A00B62E6F /* ZYCheckBaiDuZhiDaoViewController.m in Sources */,
 				DF40D25E197EBBFF001DEE5E /* ZYCellOfCenterPanelTableView.m in Sources */,
 				DF40F4AB198E972D0051E177 /* ZYCheckAuth.m in Sources */,
 				DF342712197BC8E100E24C61 /* ZYTableViewController.m in Sources */,

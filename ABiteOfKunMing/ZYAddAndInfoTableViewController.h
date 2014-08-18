@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *info;
 @property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *baiDuZhiDaoUrl;
 @property (weak, nonatomic) IBOutlet UILabel *lableAddress;
 
 

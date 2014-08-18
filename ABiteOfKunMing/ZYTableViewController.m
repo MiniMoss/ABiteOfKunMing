@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSString *selectedLon;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *baiDuZhiDaoUrl;
 @property (strong, nonatomic) NSMutableArray *detailImageUrlArr;
 @property int networkStatus;
 @property BOOL dataSourceStatus;
@@ -309,6 +310,7 @@
         cellDetailViewController.selectedLon = _selectedLon;
         cellDetailViewController.name = _name;
         cellDetailViewController.address = _address;
+        cellDetailViewController.baiDuZhiDaoUrl = _baiDuZhiDaoUrl;
         cellDetailViewController.detailImageUrlArr = _detailImageUrlArr;
     }else if ([segue.identifier isEqualToString:SHOW_LOGIN_SEGUE_KEY]){
         ZYLoginViewController *loginViewController = (ZYLoginViewController *)segue.destinationViewController;
@@ -381,11 +383,19 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    _baiDuZhiDaoUrl = @"nil";
     if (_dataSourceStatus) {
         NSLog(@"%d",indexPath.row);
         _selectedLat = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"latitude"]];
         _selectedLon = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"longitude"]];
-        _name = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"origtext"]];
+        
+        NSString *origText = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"origtext"];
+        NSArray *origTextArr = [origText componentsSeparatedByString:@"#"];
+        _name = origTextArr[0];
+        if ([origTextArr count] > 1) {
+            _baiDuZhiDaoUrl = origTextArr[1];
+        }
+        
         _address = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
         _detailImageUrlArr = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"image"];
         [self performSegueWithIdentifier:@"showCellDetail" sender:self];

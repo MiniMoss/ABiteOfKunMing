@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *selectedLon;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *baiDuZhiDaoUrl;
 @property (strong, nonatomic) NSMutableArray *detailImageUrlArr;
 
 @end
