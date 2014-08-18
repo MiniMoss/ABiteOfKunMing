@@ -241,7 +241,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="277" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="查询百度百科" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbG-c5-e2P">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="查看百度百科" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbG-c5-e2P">
                                                     <rect key="frame" x="80" y="22" width="150" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -250,9 +250,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="hN9-JQ-8Qp" kind="push" identifier="checkBaiDuZhiDao" id="CMS-sb-CP3"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="H8w-Xv-qwv">
                                         <rect key="frame" x="0.0" y="75" width="310" height="100"/>
@@ -277,6 +274,7 @@
                     </tableView>
                     <connections>
                         <outlet property="lableAddress" destination="FYf-qB-b0L" id="tl2-iu-AGn"/>
+                        <segue destination="hN9-JQ-8Qp" kind="push" identifier="checkBaiDuZhiDao" id="3oT-Tg-VZJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fch-Ym-M87" userLabel="First Responder" sceneMemberID="firstResponder"/>
