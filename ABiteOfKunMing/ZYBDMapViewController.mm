@@ -212,7 +212,10 @@
                                                                                    reuseIdentifier:@"myAnnotation"];
         newAnnotationView.pinColor = BMKPinAnnotationColorRed;
         newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
-        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+        UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 60)];
+        [rightButton setImage:[UIImage imageNamed:@"navBtn"] forState:UIControlStateNormal];
+        
         [rightButton addTarget:nil
                         action:@selector(showActionSheet:)
               forControlEvents:UIControlEventTouchUpInside];

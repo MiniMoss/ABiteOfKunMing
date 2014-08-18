@@ -44,8 +44,8 @@ BMKMapManager *_mapManager;
     }
     
     //设置statusbar字体为白色
-    [application setStatusBarHidden:NO];
-    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [application setStatusBarHidden:NO];
+//    [application setStatusBarStyle:UIStatusBarStyleLightContent];
     return YES;
 }
 							

@@ -47,9 +47,9 @@
     if ([self appDelegate].wbManager.isAccessTokenValid == NO) {
         //_lunchImageLayout.hidden = YES;
     }else if([self appDelegate].wbManager.isAccessTokenValid == YES){
-        [self performSegueWithIdentifier:SHOWTABLEVIEW_SEGUE_ID_KEY sender:self];
         [self appDelegate].wbManager.loginFlag = NO;
         [self appDelegate].wbManager.reLoginFlag = YES;
+        [self performSegueWithIdentifier:SHOWTABLEVIEW_SEGUE_ID_KEY sender:self];
     }
 }
 

@@ -111,7 +111,6 @@
     
     if([self appDelegate].wbManager.loginFlag){    //loginView trigger
         [self dismissViewControllerAnimated:YES completion:nil];
-        //[_WBDataTableView triggerPullToRefresh];
         [self insertRowAtTop];
     }else if([self appDelegate].wbManager.reLoginFlag){   //reLoginView trigger
         [[self appDelegate].checkAuth checkAuthValid];

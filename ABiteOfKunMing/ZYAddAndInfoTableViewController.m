@@ -18,11 +18,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _lableInfo.text = @"info";
     _lableAddress.text = _address;
 }
 
+- (IBAction)checkBaiDu:(id)sender {
+    //[self performSegueWithIdentifier:@"checkBaiDu" sender:self];
+}
 
 //#pragma mark - Table view data source
 //
