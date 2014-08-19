@@ -123,10 +123,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //launchImage加载时间
-    [NSThread sleepForTimeInterval:3.0];
-    
+        
     _btnRefresh.enabled = NO;
     
     [self appDelegate].checkAuth.delegate =self;
