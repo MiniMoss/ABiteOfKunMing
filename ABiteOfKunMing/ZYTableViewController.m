@@ -365,7 +365,10 @@
     if (_dataSourceStatus) {
         [self loadCellImage:cell indexPath:indexPath];
         
-        cell.labelTitle.text = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"origtext"]];
+        NSString *origText = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"origtext"];
+        NSArray *origTextArr = [origText componentsSeparatedByString:@"#"];
+        cell.labelTitle.text = origTextArr[0];
+        
         //cell.labelSubtitle.text = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
     }else{
         _WBDataTableView.showsPullToRefresh = NO;
