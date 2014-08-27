@@ -12,6 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
-//@property (weak, nonatomic) IBOutlet UILabel *labelSubtitle;
 
 @end

@@ -7,8 +7,7 @@
 //
 
 #import "ZYAddAndInfoTableViewController.h"
-#import "ZYCheckBaiDuZhiDaoViewController.h"
-#define CHECHBAIDUZHIDAO_SEGUE_ID_KEY @"checkBaiDuZhiDao"
+
 
 @interface ZYAddAndInfoTableViewController ()
 
@@ -20,24 +19,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _lableAddress.text = _address;
+    _labelInfo.text = _info;
+    
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == 0) {
-        [self performSegueWithIdentifier:CHECHBAIDUZHIDAO_SEGUE_ID_KEY sender:self];
-    }
-}
-
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-   if ([segue.identifier isEqualToString:CHECHBAIDUZHIDAO_SEGUE_ID_KEY]){
-        ZYCheckBaiDuZhiDaoViewController *checkBaiDuZhiDao = (ZYCheckBaiDuZhiDaoViewController *)segue.destinationViewController;
-        checkBaiDuZhiDao.baiDuZhiDaoUrl = _baiDuZhiDaoUrl;
-    }
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.row == 0) {
+//        [self performSegueWithIdentifier:CHECHBAIDUZHIDAO_SEGUE_ID_KEY
+//                                  sender:self];
+//    }
+//}
+//
+//
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//   if ([segue.identifier isEqualToString:CHECHBAIDUZHIDAO_SEGUE_ID_KEY]){
+//        ZYCheckBaiDuZhiDaoViewController *checkBaiDuZhiDao = (ZYCheckBaiDuZhiDaoViewController *)segue.destinationViewController;
+//        checkBaiDuZhiDao.baiDuZhiDaoUrl = _baiDuZhiDaoUrl;
+//    }
+//}
 
 
 //#pragma mark - Table view data source

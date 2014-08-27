@@ -31,8 +31,8 @@
 @property (strong, nonatomic) NSString *selectedLat;
 @property (strong, nonatomic) NSString *selectedLon;
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *address;
-@property (strong, nonatomic) NSString *baiDuZhiDaoUrl;
+@property (strong, nonatomic) NSString *info;
+//@property (strong, nonatomic) NSString *baiDuZhiDaoUrl;
 @property (strong, nonatomic) NSMutableArray *detailImageUrlArr;
 @property int networkStatus;
 @property BOOL dataSourceStatus;
@@ -306,8 +306,8 @@
         cellDetailViewController.selectedLat = _selectedLat;
         cellDetailViewController.selectedLon = _selectedLon;
         cellDetailViewController.name = _name;
-        cellDetailViewController.address = _address;
-        cellDetailViewController.baiDuZhiDaoUrl = _baiDuZhiDaoUrl;
+        cellDetailViewController.info = _info;
+        //cellDetailViewController.baiDuZhiDaoUrl = _baiDuZhiDaoUrl;
         cellDetailViewController.detailImageUrlArr = _detailImageUrlArr;
     }else if ([segue.identifier isEqualToString:SHOW_LOGIN_SEGUE_KEY]){
         ZYLoginViewController *loginViewController = (ZYLoginViewController *)segue.destinationViewController;
@@ -383,7 +383,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _baiDuZhiDaoUrl = @"error";
+    _info = @"error";
     if (_dataSourceStatus) {
         NSLog(@"%d",indexPath.row);
         _selectedLat = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"latitude"]];
@@ -393,10 +393,10 @@
         NSArray *origTextArr = [origText componentsSeparatedByString:@"#"];
         _name = origTextArr[0];
         if ([origTextArr count] > 1) {
-            _baiDuZhiDaoUrl = origTextArr[1];
+            _info = origTextArr[1];
         }
         
-        _address = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
+//        _address = [NSString stringWithFormat:@"%@", [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"geo"]];
         _detailImageUrlArr = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"image"];
         [self performSegueWithIdentifier:SHOW_CELLDETAIL_SEGUE_KEY sender:self];
     }

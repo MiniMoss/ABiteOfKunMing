@@ -56,8 +56,7 @@
         DetailImageViewController.detailImageUrlArr = _detailImageUrlArr;
     }else if ([segue.identifier isEqualToString:SHOWADDINFO_SEGUE_ID_KEY]){
         ZYAddAndInfoTableViewController *addAndInfoController = (ZYAddAndInfoTableViewController *)segue.destinationViewController;
-        addAndInfoController.address = _address;
-        addAndInfoController.baiDuZhiDaoUrl = _baiDuZhiDaoUrl;
+        addAndInfoController.info = _info;
     }
 }
 
