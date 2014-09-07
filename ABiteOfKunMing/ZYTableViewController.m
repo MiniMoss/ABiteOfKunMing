@@ -14,16 +14,9 @@
 #define SHOW_LOGIN_SEGUE_KEY @"showLoginView"
 #define SHOW_CELLDETAIL_SEGUE_KEY @"showCellDetail"
 
-#define BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=7&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
+#define BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=10&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
-#define TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=7&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
-
-//test URL 改name
-#define TEST_BASE_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=0&pagetime=0&reqnum=10&lastid=0&name=hua19761110&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
-
-#define TEST_TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=10&lastid=0&name=hua19761110&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
-
-
+#define TIMESTAMP_URL_KEY @"http://open.t.qq.com/api/statuses/user_timeline?format=json&pageflag=1&pagetime=%@&reqnum=10&lastid=0&name=zCloud1984&fopenid=&type=0&contenttype=0&clientip=&oauth_version=2.a&scope=all&oauth_consumer_key=%@&access_token=%@&openid=%@"
 
 @interface ZYTableViewController ()<UITableViewDelegate, UITableViewDataSource,ZYCheckAuthDelegate,ZYLoginViewControllerDelegate>
 
@@ -50,6 +43,7 @@
 {
     return (ZYAppDelegate *)[UIApplication sharedApplication].delegate;
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -289,7 +283,6 @@
         [cell.imageView setImageWithURLRequest:request
                               placeholderImage:[UIImage imageNamed:@"placeHolder"]
                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                           //weakCell.cellImage.image = [self circleImage:image withParam:1];
                                            weakCell.cellImage.image = image;
                                            weakCell.cellImage.contentMode =UIViewContentModeScaleAspectFit;
                                        } failure:nil];

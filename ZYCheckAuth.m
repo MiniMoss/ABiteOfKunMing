@@ -12,6 +12,8 @@
 #define APPSECRECT @"34ec44459431ebe4020974cb655f87b3"
 #define REDIRECTURI @"http://www.baidu.com"
 
+
+
 @interface ZYCheckAuth () <WeiboRequestDelegate,WeiboAuthDelegate>
 
 @property (strong, nonatomic) WeiboApi *wbapi;

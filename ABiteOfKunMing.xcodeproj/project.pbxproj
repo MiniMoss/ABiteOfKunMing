@@ -683,6 +683,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -702,6 +703,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
+				PROVISIONING_PROFILE = "84b9a626-66b5-4ceb-a826-65dee047d62b";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -723,6 +725,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -735,6 +738,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "-all_load";
+				PROVISIONING_PROFILE = "84b9a626-66b5-4ceb-a826-65dee047d62b";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -756,6 +760,7 @@
 					"$(PROJECT_DIR)/TCWeiboSDK",
 				);
 				PRODUCT_NAME = ABiteOfKunMing;
+				PROVISIONING_PROFILE = "5242a134-b98a-42db-8459-a6b542bdf9e5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -776,6 +781,7 @@
 					"$(PROJECT_DIR)/TCWeiboSDK",
 				);
 				PRODUCT_NAME = ABiteOfKunMing;
+				PROVISIONING_PROFILE = "5242a134-b98a-42db-8459-a6b542bdf9e5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

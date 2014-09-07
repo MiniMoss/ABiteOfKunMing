@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "登录.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "导航.png"
+      "filename" : "登录@2x.png"
     }
   ],
   "info" : {

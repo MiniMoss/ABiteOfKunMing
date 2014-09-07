@@ -85,7 +85,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"百度地图客户端导航",@"百度地图网页导航",@"苹果地图导航",nil];
+                                                    otherButtonTitles:@"苹果地图导航",@"百度地图客户端导航",@"百度地图网页导航",nil];
     [actionSheet showInView:self.view];
 }
 
@@ -173,35 +173,20 @@
 {
     switch (buttonIndex) {
         case 0:
-            [self nativeNavi];
+            [self appleNav];
+            
             break;
         case 1:
-            [self webNavi];
+            [self nativeNavi];
             break;
         case 2:
-            [self appleNav];
+            [self webNavi];
             break;
         default:
             break;
     }
 }
 
-/*
- - (void)actionSheetCancel:(UIActionSheet *)actionSheet
- {
- //
- }
- 
- -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
- {
- //
- }
- 
- -(void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
- {
- //
- }
- */
 
 #pragma mark - BMKAnnotation protocal
 
